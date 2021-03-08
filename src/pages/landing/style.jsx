@@ -6,5 +6,6 @@ export default makeStyles(() => ({
         flexGrow: 1,
         overflow:'hidden',
 
-    }
+    },
+
 }))

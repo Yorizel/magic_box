@@ -8,7 +8,7 @@ export default function LargePostCard({data}) {
         <Card className={classes.root}>
 
 
-                        <Grid spacing={3} direction={'column'}  container>
+                        <Grid spacing={8} direction={'column'}  container>
                             <Grid  item>
                                 <CardContent>
                                     <Typography className={classes.titleText}>
@@ -23,8 +23,8 @@ export default function LargePostCard({data}) {
                                     </Typography>
                                 </CardContent>
                             </Grid>
-                            <Grid justify={'space-around'} spacing={10} alignItems={'center'} container item>
-                                <Grid item>
+                            <Grid justify={'space-between'}  alignItems={'center'} container item>
+                                <Grid style={{marginLeft: 20}} item>
                                     <Typography className={classes.textDate}>
                                         {data.date}
                                     </Typography>

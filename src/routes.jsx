@@ -16,6 +16,7 @@ export default function Routes(){
             >
                 <Switch location={location.key}>
                     <Route exact path={'/'} children={<LandingPage/>}/>
+
                 </Switch>
             </CSSTransition>
         </TransitionGroup>

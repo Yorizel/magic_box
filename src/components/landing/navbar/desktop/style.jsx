@@ -6,11 +6,12 @@ export default makeStyles(() => ({
         maxWidth: 60
     },
     logoText:{
+        fontFamily: 'GlacialIndifferenceRegular',
         color: 'black',
         letterSpacing: '0.25em',
         textTransform: 'uppercase',
         fontWeight: 'bold',
-        fontSize: '1.25rem'
+        fontSize: '1.45rem'
     },
     textButton:{
         color: 'black',

@@ -6,11 +6,11 @@ export const useResponsive = () => {
         const setResponsiveness = () => {
             return window.innerWidth < 900
                 ? setResponsive(true)
-                : setResponsive(false);
-        };
-        setResponsiveness();
-        window.addEventListener("resize", () => setResponsiveness());
-    }, [responsive])
+                : setResponsive(false)
+        }
+        setResponsiveness()
+        window.addEventListener('resize', () => setResponsiveness())
+    }, [])
 
-    return {responsive, setResponsive}
+    return { responsive }
 }
