@@ -1,12 +1,18 @@
-import { Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@material-ui/core'
+import {
+    Card,
+    CardActions,
+    CardContent,
+    CardMedia,
+    Grid,
+    Typography,
+} from '@material-ui/core'
 import useStyles from './style'
 import { useHistory } from 'react-router-dom'
 
-export default function PostCard({data}) {
+export default function PostCard({ data }) {
     const classes = useStyles()
     const history = useHistory()
     return (
-
         <>
             <Card className={classes.root}>
                 <Grid direction={'column'} alignItems={'flex-start'} container>
@@ -15,12 +21,11 @@ export default function PostCard({data}) {
                             image={data.image}
                             component={'img'}
                             className={classes.media}
-                            style={{objectFit: 'cover', maxHeight: 150}}
+                            style={{ objectFit: 'cover', maxHeight: 150 }}
                         />
-
                     </Grid>
                     <Grid item>
-                        <CardContent >
+                        <CardContent>
                             <Typography className={classes.titleText}>
                                 {data.Title}
                             </Typography>
@@ -33,7 +38,13 @@ export default function PostCard({data}) {
                             </Typography>
                         </CardContent>
                     </Grid>
-                    <Grid  justify={'space-around'} alignItems={'center'} style={{marginTop: 'auto'}} container item>
+                    <Grid
+                        justify={'space-around'}
+                        alignItems={'center'}
+                        style={{ marginTop: 'auto' }}
+                        container
+                        item
+                    >
                         <Grid item>
                             <Typography className={classes.textDate}>
                                 {data.date}
@@ -41,7 +52,12 @@ export default function PostCard({data}) {
                         </Grid>
                         <Grid item>
                             <CardActions>
-                                <Typography onClick={() => history.push('/post' ,{data})}  className={classes.buttonText}>
+                                <Typography
+                                    onClick={() =>
+                                        history.push('/post', { data })
+                                    }
+                                    className={classes.buttonText}
+                                >
                                     Leia mais
                                 </Typography>
                             </CardActions>
@@ -49,7 +65,6 @@ export default function PostCard({data}) {
                     </Grid>
                 </Grid>
             </Card>
-
         </>
     )
 }
