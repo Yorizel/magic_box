@@ -1,14 +1,14 @@
-import { AppBar, Toolbar } from '@material-ui/core'
-import useSyles from './style'
+import { AppBar, Toolbar, useMediaQuery } from '@material-ui/core'
+import useStyles from './style'
 import MobileNavbar from './mobile'
 import DesktopNavbar from './desktop'
-import { useResponsive } from '../../../hooks/useResponsive'
 
 export default function Navbar() {
-    const { responsive} = useResponsive()
-    const classes = useSyles()
+    const responsive = useMediaQuery(theme => theme.breakpoints.down('md'));
+
+    const classes = useStyles()
     return (
-        <AppBar position={'static'} color={'transparent'} className={classes.root} >
+        <AppBar position={responsive? 'relative':  'static'} color={'transparent'} style={responsive? {backgroundColor: 'white'} : undefined} className={classes.root} >
             <Toolbar >
 
                 { responsive ? <MobileNavbar/> : <DesktopNavbar/>}

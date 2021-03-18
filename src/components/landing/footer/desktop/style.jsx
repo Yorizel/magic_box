@@ -1,28 +1,22 @@
 import {makeStyles} from '@material-ui/core'
 
 export default makeStyles(() => ({
-    root:{
-        marginTop: 15,
 
+    logoImage:{
+        maxWidth: 40
     },
-    avatar:{
-        height: 80,
-        width: 80
-    },
-    avatarTitle:{
+    logoText:{
+        fontFamily: 'GlacialIndifferenceRegular',
         color: 'black',
-        letterSpacing: '0.05em',
+        letterSpacing: '0.25em',
         textTransform: 'uppercase',
-        fontWeight: 600,
-        fontSize: '0.90rem'
+        fontWeight: 'bold',
+        fontSize: '1.25rem'
     },
     textButton:{
         color: 'black',
         fontSize: '1.25rem'
     },
-    icon:{
-        maxWidth: 40
-    }
 
 
 }))

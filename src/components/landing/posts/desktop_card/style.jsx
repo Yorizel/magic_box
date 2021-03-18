@@ -1,25 +1,34 @@
-import {makeStyles, createStyles} from '@material-ui/core'
+import { makeStyles } from '@material-ui/styles'
+import { createStyles } from '@material-ui/core'
 
 export default makeStyles(() => createStyles({
     root:{
-        maxWidth: '90vw',
-        height: '100%',
-
+        maxWidth: '65vw',
+        minWidth: '50%',
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'row',
+        backgroundColor: '#F7FAFC',
+        minHeight: 200,
+        maxHeight: ' 35vh',
+        overflow: 'hidden',
         borderRadius: 15,
         boxShadow: '1px 5px 4px rgba(192, 189, 189, 0.4)',
         transition: ['0.5s'],
-        '@media screen and (min-width: 700px)':{
-            maxWidth: '50vw',
-        },
-        '@media screen and (max-width: 360px)':{
-            maxWidth: '90vw',
-        },
         '&:hover':{
             background: '#F3F3F3',
             transform: 'scale(1.05, 1.05)',
         }
     },
+    content:{
+        overflow: "hidden", textOverflow: "ellipsis", maxWidth: '25vw'
+    },
     media:{
+
+
+        maxWidth: '55%',
+
+        borderRadius: 8,
 
     },
     textDate:{
@@ -28,11 +37,6 @@ export default makeStyles(() => createStyles({
         maxWidth: '100%',
         wordBreak: "break-word",
         display: 'inline-block',
-    },
-    content:{
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        maxWidth: '70vw'
     },
     buttonText:{
         wordBreak: "break-word",
@@ -49,17 +53,20 @@ export default makeStyles(() => createStyles({
     titleText:{
         color: '#2D3748',
         fontWeight: 'bold',
-        fontSize: '1.80rem',
+        fontSize: '3.00rem',
         wordBreak: "break-word",
         display: 'inline-block',
     },
     bodyText:{
-        lineClamp: 4,
-        color: '#718096',
-        fontSize: '1.00rem',
-        maxWidth: '100%',
+
+        lineClamp: 2,
         textOverflow: 'ellipsis',
+        color: '#718096',
+        fontSize: '1.25rem',
+        maxWidth: '100%',
+
         wordBreak: "break-word",
-        display: 'inline-block',
+
     }
+
 }))

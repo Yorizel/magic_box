@@ -1,53 +1,82 @@
-import { Grid, Typography } from '@material-ui/core'
+import { Divider, Grid, Typography, useMediaQuery } from '@material-ui/core'
 import PostCard from './small_post_card'
 import LargePostCard from './large_post_card'
-import { useResponsive } from '../../../hooks/useResponsive'
 import Carousel from 'react-material-ui-carousel'
-import ReactElasticCarousel from 'react-elastic-carousel'
-
+import DesktopPostCard from './desktop_card'
 import useStyles from './style'
 import bg from '../../../assets/homebg.png'
+import { useState } from 'react'
 
 export default function Posts() {
-    const { responsive } = useResponsive()
+
+    const responsive = useMediaQuery(theme => theme.breakpoints.down('sm'));
     const classes = useStyles()
-    const breakPoints = [
-        { width: 1, itemsToShow: 1 },
-        { width: 550, itemsToShow: 2, itemsToScroll: 2, pagination: false },
-        { width: 850, itemsToShow: 3 },
-        { width: 1150, itemsToShow: 4, itemsToScroll: 2 },
-        { width: 1450, itemsToShow: 4 },
-        { width: 1750, itemsToShow: 5 },
-    ]
-    const highlights = [{
-        id: 1,
-        Title: 'mEste é um destaque',
-        description: 'asdfasdfasdfasdfasdfasd',
-        date: '15 de maio 2020',
-    },
+    const Data = [
+        {
+            id: 1,
+            image: 'https://observatoriodocinema.uol.com.br/wp-content/uploads/2021/01/20201126-godzilla-kong-2021-sera.jpg',
+            Title: 'KingKong VS Godzilla',
+            description: 'sdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasddasdfasdfasdfasdfasdfasdadasdfasdfasdfasdfasdfasdadasdfasdfasdfasdfasdfasdadasdfasdfasdfasdfasdfasdadasdfasdfasdfasdfasdfasdadasdfasdfasdfasdfasdfasdadasdfasdfasdfasdfasdfasdadasdfasdfasdfasdfasdfasdadasdfasdfasdfasdfasdfasdadasdfasdfasdfasdfasdfasdadasdfasdfasdfasdfasdfasda',
+            date: '15 de maio 2020',
+            writer: 'Edgar Santos'
+        },
         {
             id: 2,
-            Title: 'mEste é um destaque2',
+            image: 'https://i.ytimg.com/vi/8Tk8sqXlogM/maxresdefault.jpg',
+            Title: 'Mortal Kombat',
+            description: 'asdfasdfasdfasdfasdfasdaaishdbflkajshdlfouahsldioufhalçosiudhfçoasdf' +
+                'asdfasdfasdfasdfasdfasdaaishdbflkajshdlfouahsldioufhalçosiudhfçoasdf' +
+                'asdfasdfasdfasdfasdfasdaaishdbflkajshdlfouahsldioufhalçosiudhfçoasdf' +
+                'asdfasdfasdfasdfasdfasdaaishdbflkajshdlfouahsldioufhalçosiudhfçoasdf',
+            date: '15 de maio 2020',
+            writer: 'Edgar Santos'
+        },
+        {
+            id: 3,
+            image: 'https://blogs.opovo.com.br/tomodachinerds/wp-content/uploads/sites/102/2020/01/Tensei-Shitara-Slime-Datta-Ken.jpg',
+            Title: 'Tensei Shitara',
             description: 'asdfasdfasdfasdfasdfasd',
             date: '15 de maio 2020',
-        }]
-    const posts = [{ id: 1, Title: 'Teste 1', description: 'asdfasdfasdfasdfasdfasd', date: '15 de maio 2020' },
-        { id: 2, Title: 'Teste 2', description: 'asdfasdfasdfasdfasdfasd', date: '15 de maio 2020' },
-        { id: 3, Title: 'Teste 3', description: 'asdfasdfasdfasdfasdfasd', date: '15 de maio 2020' },
-        { id: 4, Title: 'teste 4', description: 'asdfasdfasdfasdfasdfasd', date: '15 de maio 2020' },
-        { id: 5, Title: 'TEste 5', description: 'asdfasdfasdfasdfasdfasd', date: '15 de maio 2020' }]
+            writer: 'Edgar Santos'
+        },
 
+    ]
+
+
+    const [posts] = useState(Data)
+    const highlights = [
+        {
+            id: 1,
+            image: 'https://observatoriodocinema.uol.com.br/wp-content/uploads/2021/01/20201126-godzilla-kong-2021-sera.jpg',
+            Title: 'KingKong VS Godzilla',
+            description: 'asdfasdfasdfasdfasdfasdaaishdbflkajshdlfouahsldioufhalçosiudhfçoasdf' +
+                'asdfasdfasdfasdfasdfasdaaishdbflkajshdlfouahsldioufhalçosiudhfçoasdf' +
+                'asdfasdfasdfasdfasdfasdaaishdbflkajshdlfouahsldioufhalçosiudhfçoasdf' +
+                'asdfasdfasdfasdfasdfasdaaishdbflkajshdlfouahsldioufhalçosiudhfçoasdf' +
+                'asdfasdfasdfasdfasdfasdaaishdbflkajshdlfouahsldioufhalçosiudhfçoasdf' +
+                'asdfasdfasdfasdfasdfasdaaishdbflkajshdlfouahsldioufhalçosiudhfçoasdf' +
+                'asdfasdfasdfasdfasdfasdaaishdbflkajshdlfouahsldioufhalçosiudhfçoasdf' +
+                'asdfasdfasdfasdfasdfasdaaishdbflkajshdlfouahsldioufhalçosiudhfçoasdf' +
+                'asdfasdfasdfasdfasdfasdaaishdbflkajshdlfouahsldioufhalçosiudhfçoasdf' +
+                'asdfasdfasdfasdfasdfasdaaishdbflkajshdlfouahsldioufhalçosiudhfçoasdf' +
+                'asdfasdfasdfasdfasdfasdaaishdbflkajshdlfouahsldioufhalçosiudhfçoasdf' +
+                'asdfasdfasdfasdfasdfasdaaishdbflkajshdlfouahsldioufhalçosiudhfçoasdf',
+            date: '15 de maio 2020',
+            writer: 'Edgar Santos'
+        },
+    ]
 
     return (
         <Grid container spacing={10} alignItems={'center'} justify={'center'} component={'div'}>
-            {responsive ? null : <img src={bg} alt={'the end'} style={{ marginTop: 30 }} />}
+            {responsive ? null : <img src={bg} alt={'the end'} style={{ marginTop: 100 }} />}
 
-            <Grid direction={'column'} alignItems={'center'} justify={'center'} spacing={3} container item>
+            <Grid direction={'column'} alignItems={'center'} justify={'center'} spacing={3}
+                  container item>
                 {responsive ?
                     <>
                         <Grid item>
                             <Typography style={{
-                                fontSize: '2.35rem',
+                                fontSize: '2.40rem',
                                 fontWeight: 'bold',
                                 letterSpacing: '0.30rem',
                                 fontFamily: 'GlacialIndifferenceRegular',
@@ -56,7 +85,7 @@ export default function Posts() {
                             </Typography>
                         </Grid>
                         <Grid item>
-                            <Carousel animation={'slide'} cycleNavigation={true} navButtonsAlwaysInvisible={responsive}>
+                            <Carousel animation={'slide'} cycleNavigation={true} className={classes.carousel} navButtonsAlwaysInvisible={responsive}>
                                 {highlights.map((item) => <Grid key={item.id} item><PostCard data={item} /> </Grid>)}
                             </Carousel>
                         </Grid>
@@ -84,13 +113,16 @@ export default function Posts() {
                             </Carousel>
 
                         </Grid>
-                    </>}
+                    </>
+                }
+
             </Grid>
 
 
-            <Grid direction={'column'} alignItems={'center'} justify={'center'} spacing={3}
+            <Grid direction={'row'} alignItems={'center'} justify={'center'} spacing={5}
                   container item>
-                {responsive ?
+                {
+                    responsive ?
                     <>
                         <Grid item>
                             <Typography style={{
@@ -102,40 +134,57 @@ export default function Posts() {
                                 Novos Posts
                             </Typography>
                         </Grid>
-                        <Carousel animation={'slide'} cycleNavigation={true} navButtonsAlwaysInvisible={responsive}>
-                            {posts.map((item) => <Grid key={item.id} item><PostCard data={item} /> </Grid>)}
-                        </Carousel>
-                    </>
-
-                    :
-                    <>
-
-                        <Grid item>
-                            <Typography style={{
-                                fontSize: '4.00rem',
-                                fontWeight: 'bold',
-                                letterSpacing: '0.50rem',
-                                fontFamily: 'GlacialIndifferenceRegular',
-                            }}>
-                                Novos Posts
-                            </Typography>
-                        </Grid>
-                        <ReactElasticCarousel easing={'ease-in'} className={classes.carousel} breakPoints={breakPoints}
-                                              enableAutoPlay={true}
-                                              showArrows={false} autoPlaySpeed={2000} isRTL={false}>
-
+                        <Grid spacing={5} direction={'column'} alignContent={'center'} justify={'center'} container
+                              item>
                             {posts.map((item) =>
 
 
-                                <PostCard key={item.id} data={item} />,
+                                <Grid key={item.id} item>
+                                    <PostCard data={item} />
+                                </Grid>,
                             )}
-
-                        </ReactElasticCarousel>
+                        </Grid>
                     </>
+                    :
+                    <>
 
+                        <Grid direction={'column'} style={{ display: 'flex' }} alignItems={'center'} justify={'center'}
+                              container item>
+
+
+                            <Grid spacing={5} direction={'column'} alignContent={'center'} alignItems={'center'}
+                                  justify={'center'} container item>
+                                <Grid item>
+                                    <Typography style={{
+                                        fontSize: '4.00rem',
+                                        fontWeight: 'bold',
+                                        letterSpacing: '0.50rem',
+                                        fontFamily: 'GlacialIndifferenceRegular',
+                                    }}>
+                                        Novos Posts
+                                    </Typography>
+                                </Grid>
+                                {posts.map((item) =>
+
+
+                                    <Grid key={item.id} item>
+                                        <DesktopPostCard data={item} />
+                                    </Grid>,
+                                )}
+
+                            </Grid>
+
+
+
+
+                        </Grid>
+
+                    </>
                 }
 
+
             </Grid>
+            <Divider />
         </Grid>
 
 

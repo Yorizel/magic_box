@@ -3,6 +3,7 @@ import { Route, Switch, useLocation } from 'react-router-dom'
 
 
 import LandingPage from './pages/landing'
+import Post from './pages/post'
 
 export default function Routes(){
     let location = useLocation();
@@ -14,9 +15,9 @@ export default function Routes(){
                 classNames={'page'}
                 in={true}
             >
-                <Switch location={location.key}>
+                <Switch location={location}>
                     <Route exact path={'/'} children={<LandingPage/>}/>
-
+                    <Route exact path={'/post'} children={<Post/>}/>
                 </Switch>
             </CSSTransition>
         </TransitionGroup>

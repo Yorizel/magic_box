@@ -2,15 +2,18 @@ import {makeStyles} from '@material-ui/core'
 
 export default makeStyles(() => ({
     root:{
-        maxWidth: 1425,
+        maxWidth: '80vw',
         minWidth: '50%',
         width: '100%',
         display: 'flex',
         backgroundColor: '#F7FAFC',
         minHeight: 200,
-        
         borderRadius: 15,
-        boxShadow: '1px 5px 4px rgba(192, 189, 189, 0.4)'
+        boxShadow: '1px 5px 4px rgba(192, 189, 189, 0.4)',
+
+    },
+    content:{
+        overflow: "hidden", textOverflow: "ellipsis", maxWidth: '30vw'
     },
     media:{
         height: '100%',
@@ -41,7 +44,8 @@ export default makeStyles(() => ({
         display: 'inline-block',
     },
     bodyText:{
-
+        lineClamp: 4,
+        textOverflow: 'ellipsis',
         color: '#718096',
         fontSize: '1.25rem',
         maxWidth: '100%',

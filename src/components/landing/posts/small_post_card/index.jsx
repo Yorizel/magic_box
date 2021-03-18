@@ -1,37 +1,39 @@
 import { Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@material-ui/core'
-import image from '../../../../assets/mortalKombat.jpg'
 import useStyles from './style'
+import { useHistory } from 'react-router-dom'
 
 export default function PostCard({data}) {
     const classes = useStyles()
+    const history = useHistory()
     return (
 
         <>
             <Card className={classes.root}>
                 <Grid direction={'column'} alignItems={'flex-start'} container>
-                    <Grid style={{ maxHeight: '30%' }} item>
+                    <Grid item>
                         <CardMedia
-                            image={image} component={'img'}
+                            image={data.image}
+                            component={'img'}
                             className={classes.media}
-
+                            style={{objectFit: 'cover', maxHeight: 150}}
                         />
 
                     </Grid>
                     <Grid item>
-                        <CardContent>
+                        <CardContent >
                             <Typography className={classes.titleText}>
                                 {data.Title}
                             </Typography>
                         </CardContent>
                     </Grid>
                     <Grid item>
-                        <CardContent>
-                            <Typography className={classes.bodyText}>
+                        <CardContent className={classes.content}>
+                            <Typography noWrap className={classes.bodyText}>
                                 {data.description}
                             </Typography>
                         </CardContent>
                     </Grid>
-                    <Grid justify={'space-around'} alignItems={'center'} container item>
+                    <Grid  justify={'space-around'} alignItems={'center'} style={{marginTop: 'auto'}} container item>
                         <Grid item>
                             <Typography className={classes.textDate}>
                                 {data.date}
@@ -39,7 +41,7 @@ export default function PostCard({data}) {
                         </Grid>
                         <Grid item>
                             <CardActions>
-                                <Typography className={classes.buttonText}>
+                                <Typography onClick={() => history.push('/post' ,{data})}  className={classes.buttonText}>
                                     Leia mais
                                 </Typography>
                             </CardActions>

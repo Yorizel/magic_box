@@ -3,27 +3,24 @@ import {makeStyles} from '@material-ui/core'
 export default makeStyles(() => ({
 
     logoImage:{
-        maxWidth: 60
+        maxWidth: '10vw',
+        '@media screen and (min-width: 700px)':{
+            maxWidth: '5vw',
+
+
+        }
     },
     logoText:{
         fontFamily: 'GlacialIndifferenceRegular',
         color: 'black',
         letterSpacing: '0.25em',
         textTransform: 'uppercase',
-        fontWeight: 'bold',
-        fontSize: '1.45rem'
-    },
-    avatar:{
-        height: 60,
-        width: 60
+        fontWeight: 700,
+        fontSize: '1.10rem'
     },
     icon:{
-        maxWidth: 40
-    },
-    textButton:{
-        color: 'black',
-        fontSize: '1.25rem'
-    },
+        maxWidth: '10vw'
+    }
 
 
 }))

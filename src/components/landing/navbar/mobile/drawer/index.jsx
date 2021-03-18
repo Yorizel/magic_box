@@ -1,25 +1,50 @@
 import {
     Avatar,
+    Collapse,
     Divider,
     Grid,
     IconButton,
-    InputBase,
-    Typography,
-    ListItemIcon,
-    ListItem,
-    Collapse,
     List,
+    ListItem,
+    ListItemIcon,
     ListItemText,
+    TextField,
+    Typography,
 } from '@material-ui/core'
 import { ExitToApp, ExpandLess, ExpandMore, Home, Instagram, Search, ViewHeadline } from '@material-ui/icons'
 import image from '../../../../../assets/avatar.jpg'
 import useStyles from './style'
 import { useState } from 'react'
 import { BackstageIcon, HeadshotIcon, HeroesIcon, ShinobiIcon } from '../../../../../assets'
+import { Autocomplete } from '@material-ui/lab'
 
 export default function MobileDrawer() {
     const [open, setOpen] = useState(false)
     const classes = useStyles()
+    const Data = [
+        {
+            id: 1,
+            image: 'https://observatoriodocinema.uol.com.br/wp-content/uploads/2021/01/20201126-godzilla-kong-2021-sera.jpg',
+            Title: 'KingKong VS Godzilla',
+            description: 'asdfasdfasdfasdfasdfasd',
+            date: '15 de maio 2020',
+        },
+        {
+            id: 2,
+            image: 'https://i.ytimg.com/vi/8Tk8sqXlogM/maxresdefault.jpg',
+            Title: 'Mortal Kombat',
+            description: 'asdfasdfasdfasdfasdfasd',
+            date: '15 de maio 2020',
+        },
+        {
+            id: 3,
+            image: 'https://animesonehd.xyz/wp-content/uploads/2020/12/tensei-shitara-2-online-em-HD.png',
+            Title: 'Tensei Shitara',
+            description: 'asdfasdfasdfasdfasdfasd',
+            date: '15 de maio 2020',
+        },
+
+    ]
     return (
         <>
             <Grid direction={'column'} justify={'center'} alignItems={'center'} className={classes.root} container>
@@ -33,16 +58,24 @@ export default function MobileDrawer() {
                 </Grid>
             </Grid>
             <Divider />
-            <Grid direction={'row'} justify={'center'} alignItems={'center'} container>
+            <Grid direction={'row'}  justify={'center'} alignItems={'center'} container>
                 <Grid item>
                     <IconButton>
                         <Search />
                     </IconButton>
                 </Grid>
-                <Grid item>
-                    <InputBase
-                        placeholder={'Pesquise aqui'}
-                    />
+                <Grid style={{width: '60vw'}} item>
+                    <Autocomplete
+                        style={{width: '90%'}}
+                        id='free-solo-demo'
+                        freeSolo
+                        renderInput={
+                            (params) =>
+                                (<TextField
+                                    {...params}
+                                    placeholder={'Pesquise aqui'}
+                                />)}
+                        options={Data.map((option) => option.Title)} />
                 </Grid>
             </Grid>
             <Divider />
@@ -52,7 +85,7 @@ export default function MobileDrawer() {
                 <Grid item>
 
                     <IconButton onClick={() => setOpen(!open)}>
-                        <ViewHeadline/>
+                        <ViewHeadline />
                         <Typography className={classes.textButton}>
                             Seções
                         </Typography>
@@ -118,7 +151,7 @@ export default function MobileDrawer() {
 
                 </Grid>
                 <Grid item>
-                    <IconButton>
+                    <IconButton  href={'https://www.instagram.com/magicbox.tv/'}>
                         <Instagram />
                         <Typography className={classes.textButton}>
                             Instagram
