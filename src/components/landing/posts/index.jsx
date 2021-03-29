@@ -2,7 +2,6 @@ import { Divider, Grid, Typography, useMediaQuery } from '@material-ui/core'
 import PostCard from './small_post_card'
 import LargePostCard from './large_post_card'
 import Carousel from 'react-material-ui-carousel'
-import DesktopPostCard from './desktop_card'
 import useStyles from './style'
 import bg from '../../../assets/homebg.png'
 import { useState } from 'react'
@@ -38,7 +37,17 @@ export default function Posts() {
             image:
                 'https://blogs.opovo.com.br/tomodachinerds/wp-content/uploads/sites/102/2020/01/Tensei-Shitara-Slime-Datta-Ken.jpg',
             Title: 'Tensei Shitara',
-            description: 'asdfasdfasdfasdfasdfasd',
+            description:
+                'asdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasd',
+            date: '15 de maio 2020',
+            writer: 'Edgar Santos',
+        },
+        {
+            id: 4,
+            image: 'https://wallpaperaccess.com/full/4850883.png',
+            Title: 'Snyder Cut',
+            description:
+                'asdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasd',
             date: '15 de maio 2020',
             writer: 'Edgar Santos',
         },
@@ -93,7 +102,7 @@ export default function Posts() {
                         <Grid item>
                             <Typography
                                 style={{
-                                    fontSize: '2.40rem',
+                                    fontSize: '2.50rem',
                                     fontWeight: 'bold',
                                     letterSpacing: '0.30rem',
                                     fontFamily: 'GlacialIndifferenceRegular',
@@ -161,6 +170,8 @@ export default function Posts() {
                 alignItems={'center'}
                 justify={'center'}
                 spacing={5}
+                lg={10}
+                md={10}
                 container
                 item
             >
@@ -169,7 +180,7 @@ export default function Posts() {
                         <Grid item>
                             <Typography
                                 style={{
-                                    fontSize: '2.35rem',
+                                    fontSize: '2.50rem',
                                     fontWeight: 'bold',
                                     letterSpacing: '0.30rem',
                                     fontFamily: 'GlacialIndifferenceRegular',
@@ -225,11 +236,20 @@ export default function Posts() {
                                         Novos Posts
                                     </Typography>
                                 </Grid>
-                                {posts.map((item) => (
-                                    <Grid key={item.id} item>
-                                        <DesktopPostCard data={item} />
-                                    </Grid>
-                                ))}
+                                <Grid
+                                    spacing={10}
+                                    direction={'row'}
+                                    alignContent={'center'}
+                                    alignItems={'center'}
+                                    justify={'center'}
+                                    container
+                                >
+                                    {posts.map((item) => (
+                                        <Grid key={item.id} item>
+                                            <PostCard data={item} />
+                                        </Grid>
+                                    ))}
+                                </Grid>
                             </Grid>
                         </Grid>
                     </>

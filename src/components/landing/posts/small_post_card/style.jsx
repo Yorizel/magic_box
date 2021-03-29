@@ -1,65 +1,63 @@
-import {makeStyles, createStyles} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core'
 
-export default makeStyles(() => createStyles({
-    root:{
-        maxWidth: '90vw',
-        height: '100%',
+export default makeStyles((theme) => ({
+    root: {
+        maxWidth: 305,
+        height: 390,
 
         borderRadius: 15,
         boxShadow: '1px 5px 4px rgba(192, 189, 189, 0.4)',
         transition: ['0.5s'],
-        '@media screen and (min-width: 700px)':{
-            maxWidth: '50vw',
+        '&:hover': {
+            backgroundColor: theme.palette.primary.light,
+            transform: 'scale(1.04, 1.04)',
         },
-        '@media screen and (max-width: 360px)':{
+
+        '@media screen and (max-width: 360px)': {
             maxWidth: '90vw',
         },
-        '&:hover':{
-            background: '#F3F3F3',
-            transform: 'scale(1.05, 1.05)',
-        }
     },
-    media:{
-
-    },
-    textDate:{
+    media: {},
+    textDate: {
+        marginTop: 'auto',
         color: '#718096',
         fontSize: '1.00rem',
         maxWidth: '100%',
-        wordBreak: "break-word",
+        wordBreak: 'break-word',
         display: 'inline-block',
     },
-    content:{
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        maxWidth: '70vw'
+    content: {
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        maxWidth: '100%',
     },
-    buttonText:{
-        wordBreak: "break-word",
+    buttonText: {
+        wordBreak: 'break-word',
         display: 'inline-block',
         fontSize: '1.15rem',
+
         color: '#2D3748',
         cursor: 'pointer',
         fontWeight: 'bold',
         transition: ['0.5s'],
-        '&:hover':{
+        '&:hover': {
             transform: 'scale(1.05, 1.05)',
-        }
+        },
     },
-    titleText:{
+    titleText: {
         color: '#2D3748',
         fontWeight: 'bold',
         fontSize: '1.80rem',
-        wordBreak: "break-word",
+        wordBreak: 'break-word',
         display: 'inline-block',
     },
-    bodyText:{
-        lineClamp: 4,
-        color: '#718096',
-        fontSize: '1.00rem',
-        maxWidth: '100%',
+    bodyText: {
+        lineClamp: 2,
         textOverflow: 'ellipsis',
-        wordBreak: "break-word",
-        display: 'inline-block',
-    }
+        color: '#718096',
+        fontSize: '1.10rem',
+        maxWidth: '100%',
+
+        wordBreak: 'break-word',
+    },
 }))

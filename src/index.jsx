@@ -2,19 +2,17 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
-import { CssBaseline, MuiThemeProvider } from '@material-ui/core'
+import { MuiThemeProvider } from '@material-ui/core'
 import theme from './theme'
-
+import AuthProvider from './context/authContext'
 
 ReactDOM.render(
     <React.StrictMode>
         <MuiThemeProvider theme={theme}>
-            <CssBaseline>
+            <AuthProvider>
                 <App />
-            </CssBaseline>
+            </AuthProvider>
         </MuiThemeProvider>
     </React.StrictMode>,
-    document.getElementById('root'),
+    document.getElementById('root')
 )
-
-

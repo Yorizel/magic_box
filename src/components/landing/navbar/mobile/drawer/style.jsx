@@ -1,28 +1,30 @@
-import {makeStyles} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core'
 
 export default makeStyles(() => ({
-    root:{
+    root: {
+        minWidth: '30vw',
+        maxWidth: '100vw',
         marginTop: 15,
-
+        '@media screen and (max-width: 500px)': {
+            width: '70vw',
+        },
     },
-    avatar:{
+    avatar: {
         height: 80,
-        width: 80
+        width: 80,
     },
-    avatarTitle:{
+    avatarTitle: {
         color: 'black',
         letterSpacing: '0.05em',
         textTransform: 'uppercase',
         fontWeight: 600,
-        fontSize: '0.90rem'
+        fontSize: '0.90rem',
     },
-    textButton:{
+    textButton: {
         color: 'black',
-        fontSize: '1.25rem'
+        fontSize: '1.25rem',
     },
-    icon:{
-        maxWidth: 40
-    }
-
-
+    icon: {
+        maxWidth: 40,
+    },
 }))

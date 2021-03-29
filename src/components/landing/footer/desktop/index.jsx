@@ -1,15 +1,25 @@
 import { Grid, IconButton, Typography } from '@material-ui/core'
-import Logo from '../../../../assets/logo.png'
+import { Logo } from '../../../../assets'
 import { Instagram, YouTube } from '@material-ui/icons'
 import useStyles from './style'
 
-export default function DesktopFooter(){
+export default function DesktopFooter() {
     const classes = useStyles()
-    return(
+    return (
         <>
-            <Grid spacing={2} direction={'row'} justify={'center'} alignItems={'center'} container>
+            <Grid
+                spacing={2}
+                direction={'row'}
+                justify={'center'}
+                alignItems={'center'}
+                container
+            >
                 <Grid item>
-                    <img alt={'deu ruim'} src={Logo} className={classes.logoImage} />
+                    <img
+                        alt={'deu ruim'}
+                        src={Logo}
+                        className={classes.logoImage}
+                    />
                 </Grid>
                 <Grid item>
                     <Typography className={classes.logoText}>
@@ -17,9 +27,7 @@ export default function DesktopFooter(){
                     </Typography>
                 </Grid>
             </Grid>
-
             <Grid alignItems={'center'} justify={'center'} container>
-
                 <Grid item>
                     <IconButton href={'https://www.instagram.com/magicbox.tv/'}>
                         <Instagram />

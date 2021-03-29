@@ -14,8 +14,14 @@ export default function PostCard({ data }) {
     const history = useHistory()
     return (
         <>
-            <Card className={classes.root}>
-                <Grid direction={'column'} alignItems={'flex-start'} container>
+            <Card style={{ display: 'flex' }} className={classes.root}>
+                <Grid
+                    direction={'column'}
+                    alignItems={'flex-start'}
+                    alignContent={'center'}
+                    justify={'center'}
+                    container
+                >
                     <Grid item>
                         <CardMedia
                             image={data.image}
@@ -31,7 +37,12 @@ export default function PostCard({ data }) {
                             </Typography>
                         </CardContent>
                     </Grid>
-                    <Grid item>
+                    <Grid
+                        style={{
+                            maxWidth: '90%',
+                        }}
+                        item
+                    >
                         <CardContent className={classes.content}>
                             <Typography noWrap className={classes.bodyText}>
                                 {data.description}
@@ -41,9 +52,8 @@ export default function PostCard({ data }) {
                     <Grid
                         justify={'space-around'}
                         alignItems={'center'}
-                        style={{ marginTop: 'auto' }}
                         container
-                        item
+                        style={{ marginTop: 'auto' }}
                     >
                         <Grid item>
                             <Typography className={classes.textDate}>
