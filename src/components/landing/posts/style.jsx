@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core'
 
 export default makeStyles(() => ({
-    carousel: {
-        height: '100%',
-    },
+  carousel: {
+    height: '100%',
+  },
 }))

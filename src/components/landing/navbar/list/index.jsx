@@ -1,78 +1,61 @@
 import {
-    List,
-    ListItem,
-    ListItemIcon,
-    ListItemText,
-    Typography,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+  useMediaQuery,
 } from '@material-ui/core'
 import {
-    BackstageIcon,
-    HeadshotIcon,
-    HeroesIcon,
-    ShinobiIcon,
+  BackstageIcon,
+  HeadshotIcon,
+  HeroesIcon,
+  ShinobiIcon,
 } from '../../../../assets'
-import useStyles from '../desktop/style'
+import React from 'react'
+import useStyles from './style'
 
 export default function MenuList() {
-    const classes = useStyles()
-    return (
-        <List style={{ paddingLeft: 15 }} component="div" disablePadding>
-            <ListItem button>
-                <ListItemIcon>
-                    <img
-                        src={HeroesIcon}
-                        alt={'deu ruim'}
-                        className={classes.icon}
-                    />
-                </ListItemIcon>
-                <ListItemText>
-                    <Typography className={classes.textButton}>
-                        Heroes
-                    </Typography>
-                </ListItemText>
-            </ListItem>
-            <ListItem button>
-                <ListItemIcon>
-                    <img
-                        src={HeadshotIcon}
-                        alt={'deu ruim'}
-                        className={classes.icon}
-                    />
-                </ListItemIcon>
-                <ListItemText>
-                    <Typography className={classes.textButton}>
-                        Headshot
-                    </Typography>
-                </ListItemText>
-            </ListItem>
-            <ListItem button>
-                <ListItemIcon>
-                    <img
-                        src={BackstageIcon}
-                        alt={'deu ruim'}
-                        className={classes.icon}
-                    />
-                </ListItemIcon>
-                <ListItemText>
-                    <Typography className={classes.textButton}>
-                        Backstage
-                    </Typography>
-                </ListItemText>
-            </ListItem>
-            <ListItem button>
-                <ListItemIcon>
-                    <img
-                        src={ShinobiIcon}
-                        alt={'deu ruim'}
-                        className={classes.icon}
-                    />
-                </ListItemIcon>
-                <ListItemText>
-                    <Typography className={classes.textButton}>
-                        Shinobi
-                    </Typography>
-                </ListItemText>
-            </ListItem>
-        </List>
-    )
+  const responsive = useMediaQuery((theme) => theme.breakpoints.down('md'))
+  const classes = useStyles()
+  return (
+    <List
+      style={responsive ? { paddingLeft: 15 } : { paddingLeft: 0 }}
+      component='div'
+      disablePadding
+    >
+      <ListItem button>
+        <ListItemIcon>
+          <img src={HeroesIcon} alt={'deu ruim'} className={classes.icon} />
+        </ListItemIcon>
+        <ListItemText>
+          <Typography className={classes.textButton}>Heroes</Typography>
+        </ListItemText>
+      </ListItem>
+      <ListItem button>
+        <ListItemIcon>
+          <img src={HeadshotIcon} alt={'deu ruim'} className={classes.icon} />
+        </ListItemIcon>
+        <ListItemText>
+          <Typography className={classes.textButton}>Headshot</Typography>
+        </ListItemText>
+      </ListItem>
+      <ListItem button>
+        <ListItemIcon>
+          <img src={BackstageIcon} alt={'deu ruim'} className={classes.icon} />
+        </ListItemIcon>
+        <ListItemText>
+          <Typography className={classes.textButton}>Backstage</Typography>
+        </ListItemText>
+      </ListItem>
+      <ListItem button>
+        <ListItemIcon>
+          <img src={ShinobiIcon} alt={'deu ruim'} className={classes.icon} />
+        </ListItemIcon>
+        <ListItemText>
+          <Typography className={classes.textButton}>Shinobi</Typography>
+        </ListItemText>
+      </ListItem>
+    </List>
+  )
 }

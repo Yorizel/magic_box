@@ -1,3 +1,4 @@
+import React from 'react'
 import Navbar from '../../components/landing/navbar'
 import { Box } from '@material-ui/core'
 import useStyles from './style'
@@ -5,16 +6,13 @@ import Posts from '../../components/landing/posts'
 import Footer from '../../components/landing/footer'
 
 export default function LandingPage() {
-    const classes = useStyles()
-    return (
+  const classes = useStyles()
 
-        <Box className={classes.root}>
-            <Navbar />
-            <Posts />
-
-            <Footer />
-        </Box>
-
-
-    )
+  return (
+    <Box className={classes.root}>
+      <Navbar />
+      <Posts />
+      <Footer />
+    </Box>
+  )
 }

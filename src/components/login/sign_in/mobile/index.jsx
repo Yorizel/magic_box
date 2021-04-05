@@ -1,77 +1,80 @@
-import { Button, Box, Grid, TextField, Typography } from '@material-ui/core'
-import { Logo } from '../../../../assets'
+import React from 'react'
+import { Button, Grid, TextField, Typography } from '@material-ui/core'
+import useStyles from './style'
+import DefaultLogo from '../../../@global/logo'
+import PropTypes from 'prop-types'
 
-export default function SignInMobile() {
-    return (
+function SignInMobile({ set }) {
+  const classes = useStyles()
+  return (
+    <div
+      style={{
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <form noValidate>
         <Grid
-            justify={'center'}
-            alignItems={'center'}
-            alignContent={'center'}
-            direction={'column'}
-            container
-            style={{
-                minHeight: '100vh',
-                minWidth: '100vw',
-            }}
+          justify={'space-evenly'}
+          alignItems={'center'}
+          alignContent={'center'}
+          direction={'column'}
+          container
+          className={classes.root}
         >
-            <Box
-                style={{
-                    background: 'rgba(233, 226, 226, 0.99)',
-                    boxShadow: '0px 4px 4px rgba(233, 226, 226, 0.25)',
-                    borderRadius: 24,
-                    width: '90%',
-                    height: '100%',
-                }}
-            >
-                <Grid
-                    direction={'row'}
-                    alignContent={'center'}
-                    justify={'center'}
-                    alignItems={'center'}
-                    container
-                >
-                    <Grid item>
-                        <img src={Logo} alt={'alou'} style={{ maxWidth: 40 }} />
-                    </Grid>
-                    <Grid item>
-                        <Typography
-                            style={{
-                                fontFamily: 'GlacialIndifferenceRegular',
-                                fontSize: '2.00rem',
-                            }}
-                        >
-                            MagicBox
-                        </Typography>
-                    </Grid>
-                </Grid>
-                <Grid
-                    direction={'column'}
-                    alignContent={'center'}
-                    alignItems={'center'}
-                    justify={'center'}
-                    container
-                >
-                    <Grid item>
-                        <TextField label={'email'} />
-                    </Grid>
-                    <Grid item>
-                        <TextField label={'senha'} />
-                    </Grid>
-                </Grid>
-                <Grid
-                    justify={'center'}
-                    alignItems={'center'}
-                    direction={'row'}
-                    container
-                >
-                    <Grid item>
-                        <Button>Entrar</Button>
-                    </Grid>
-                    <Grid item>
-                        <Button>Criar conta</Button>
-                    </Grid>
-                </Grid>
-            </Box>
+          <Grid item>
+            <DefaultLogo size={40} fontSize={'2.00rem'} />
+          </Grid>
+
+          <Grid
+            direction={'column'}
+            alignContent={'center'}
+            alignItems={'center'}
+            justify={'center'}
+            spacing={2}
+            container
+          >
+            <Grid className={classes.inputField} item>
+              <TextField fullWidth label={'Email'} />
+            </Grid>
+            <Grid className={classes.inputField} item>
+              <TextField fullWidth label={'Senha'} />
+            </Grid>
+          </Grid>
+          <Grid
+            justify={'space-evenly'}
+            alignItems={'center'}
+            direction={'row'}
+            container
+          >
+            <Grid item>
+              <Button variant={'outlined'} className={classes.button}>
+                Entrar
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button
+                onClick={() => set(true)}
+                className={classes.secondaryButton}
+              >
+                Criar conta
+              </Button>
+            </Grid>
+          </Grid>
+
+          <Grid item>
+            <Typography className={classes.textButton}>
+              Esqueceu sua senha?
+            </Typography>
+          </Grid>
         </Grid>
-    )
+      </form>
+    </div>
+  )
 }
+SignInMobile.propTypes = {
+  set: PropTypes.func,
+}
+export default SignInMobile
