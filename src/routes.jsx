@@ -3,7 +3,6 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { Route, Switch, useLocation } from 'react-router-dom'
 import LandingPage from './pages/landing'
 import Post from './pages/post'
-import LoginPage from './pages/login'
 
 export default function Routes() {
   const location = useLocation()
@@ -21,9 +20,6 @@ export default function Routes() {
           </Route>
           <Route exact path={'/post'}>
             <Post />
-          </Route>
-          <Route exact path={'/login'}>
-            <LoginPage />
           </Route>
         </Switch>
       </CSSTransition>

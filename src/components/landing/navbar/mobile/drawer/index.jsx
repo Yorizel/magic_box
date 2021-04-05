@@ -1,31 +1,24 @@
 import {
   Button,
-  Collapse,
   Divider,
   Grid,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
+  Modal,
   Typography,
 } from '@material-ui/core'
-import {
-  ExitToApp,
-  ExpandLess,
-  ExpandMore,
-  Instagram,
-  ViewHeadline,
-} from '@material-ui/icons'
-import useStyles from './style'
+import { ArrowRight } from '@material-ui/icons'
 import React, { useState } from 'react'
-import MenuList from '../../list'
 import DefaultAvatar from '../../../../@global/avatar'
 import SearchBar from '../../searchBar'
+import { useDrawerListStructure } from './useDrawerListStructure'
+import { MobileLogin } from '../../../../login'
 
 export default function MobileDrawer() {
+  const { data, classes } = useDrawerListStructure()
   const [open, setOpen] = useState(false)
-  const classes = useStyles()
-
   return (
     <>
       <Grid
@@ -36,13 +29,13 @@ export default function MobileDrawer() {
         container
       >
         <Grid style={{ marginBottom: 6 }} item>
-          <Button style={{ textTransform: 'none', borderRadius: 25 }}>
+          <Button onClick={() => setOpen(true)} className={classes.avatar}>
             <DefaultAvatar />
           </Button>
         </Grid>
       </Grid>
       <Divider />
-      <Grid style={{ width: '100%', marginTop: 6 }} item>
+      <Grid className={classes.searchContainer} item>
         <SearchBar />
       </Grid>
       <Divider />
@@ -54,40 +47,35 @@ export default function MobileDrawer() {
         container
       >
         <List style={{ paddingLeft: 3 }} component='div' disablePadding>
-          <ListItem onClick={() => setOpen(!open)} button>
-            <ListItemIcon>
-              <ViewHeadline />
-            </ListItemIcon>
-            <ListItemText>
-              <Typography className={classes.textButton}>Seções</Typography>
-            </ListItemText>
-            {open ? (
-              <ExpandLess style={{ marginLeft: 'auto' }} />
-            ) : (
-              <ExpandMore style={{ marginLeft: 'auto' }} />
-            )}
-          </ListItem>
-          <Collapse in={open} timeout='auto' unmountOnExit>
-            <MenuList />
-          </Collapse>
-          <ListItem button>
-            <ListItemIcon>
-              <Instagram />
-            </ListItemIcon>
-            <ListItemText>
-              <Typography className={classes.textButton}>Instagram</Typography>
-            </ListItemText>
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <ExitToApp />
-            </ListItemIcon>
-            <ListItemText>
-              <Typography className={classes.textButton}>Logout</Typography>
-            </ListItemText>
-          </ListItem>
+          {data.map((item) => (
+            <>
+              <ListItem onClick={item.func} key={item.id} button>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText>
+                  <Typography className={classes.textButton}>
+                    {item.title}
+                  </Typography>
+                </ListItemText>
+                <ListItemIcon>
+                  {item.arrow ? (
+                    item.arrow
+                  ) : (
+                    <ArrowRight style={{ marginLeft: 'auto' }} />
+                  )}
+                </ListItemIcon>
+              </ListItem>
+              {item.children ? item.children : null}
+            </>
+          ))}
         </List>
       </Grid>
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+        style={{ minWidth: '100vw' }}
+      >
+        <MobileLogin dialog={(value) => setOpen(value)} />
+      </Modal>
     </>
   )
 }

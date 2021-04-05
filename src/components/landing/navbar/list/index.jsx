@@ -4,58 +4,26 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
-  useMediaQuery,
 } from '@material-ui/core'
-import {
-  BackstageIcon,
-  HeadshotIcon,
-  HeroesIcon,
-  ShinobiIcon,
-} from '../../../../assets'
 import React from 'react'
-import useStyles from './style'
+import { useMenuListStructure } from './usePageStructure'
 
 export default function MenuList() {
-  const responsive = useMediaQuery((theme) => theme.breakpoints.down('md'))
-  const classes = useStyles()
+  const { classes, data, responsive } = useMenuListStructure()
   return (
     <List
       style={responsive ? { paddingLeft: 15 } : { paddingLeft: 0 }}
       component='div'
       disablePadding
     >
-      <ListItem button>
-        <ListItemIcon>
-          <img src={HeroesIcon} alt={'deu ruim'} className={classes.icon} />
-        </ListItemIcon>
-        <ListItemText>
-          <Typography className={classes.textButton}>Heroes</Typography>
-        </ListItemText>
-      </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <img src={HeadshotIcon} alt={'deu ruim'} className={classes.icon} />
-        </ListItemIcon>
-        <ListItemText>
-          <Typography className={classes.textButton}>Headshot</Typography>
-        </ListItemText>
-      </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <img src={BackstageIcon} alt={'deu ruim'} className={classes.icon} />
-        </ListItemIcon>
-        <ListItemText>
-          <Typography className={classes.textButton}>Backstage</Typography>
-        </ListItemText>
-      </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <img src={ShinobiIcon} alt={'deu ruim'} className={classes.icon} />
-        </ListItemIcon>
-        <ListItemText>
-          <Typography className={classes.textButton}>Shinobi</Typography>
-        </ListItemText>
-      </ListItem>
+      {data.map((item) => (
+        <ListItem key={item.id} button>
+          <ListItemIcon>{item.icon}</ListItemIcon>
+          <ListItemText>
+            <Typography className={classes.textButton}>{item.title}</Typography>
+          </ListItemText>
+        </ListItem>
+      ))}
     </List>
   )
 }

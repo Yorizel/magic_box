@@ -3,20 +3,19 @@ import useStyles from './style'
 import DefaultLogo from '../../../@global/logo'
 import PropTypes from 'prop-types'
 import React from 'react'
+import { useSingUpController } from '../../../../controllers/SignUpController'
+import DefaultLinerLoading from '../../../@global/loading'
 
 function SignUpMobile({ set }) {
+  const { inputRef, handleSubmit, submit, errors, state } = useSingUpController(
+    {
+      set,
+    }
+  )
   const classes = useStyles()
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        overflow: 'hidden',
-        justifyContent: 'center',
-      }}
-    >
-      <form noValidate>
+    <div className={classes.rootContainer}>
+      <form onSubmit={handleSubmit(submit)} noValidate>
         <Grid
           justify={'space-evenly'}
           alignItems={'center'}
@@ -37,10 +36,26 @@ function SignUpMobile({ set }) {
             item
           >
             <Grid className={classes.nameInputField} item>
-              <TextField fullWidth label={'Primeiro nome'} />
+              <TextField
+                {...inputRef('firstName').rest}
+                fullWidth
+                required
+                label={'Primeiro nome'}
+                error={!!errors.firstName}
+                helperText={errors.firstName ? errors.firstName.message : null}
+                inputRef={inputRef('firstName').ref}
+              />
             </Grid>
             <Grid className={classes.nameInputField} item>
-              <TextField fullWidth label={'Ultimo nome'} />
+              <TextField
+                {...inputRef('lastName').rest}
+                fullWidth
+                required
+                label={'Ultimo nome'}
+                error={!!errors.lastName}
+                helperText={errors.lastName ? errors.lastName.message : null}
+                inputRef={inputRef('lastName').ref}
+              />
             </Grid>
           </Grid>
           <Grid
@@ -53,18 +68,50 @@ function SignUpMobile({ set }) {
             item
           >
             <Grid className={classes.inputField} item>
-              <TextField fullWidth label={'Email'} />
+              <TextField
+                {...inputRef('email').rest}
+                fullWidth
+                label={'Email'}
+                required
+                error={!!errors.email}
+                helperText={errors.email ? errors.email.message : null}
+                inputRef={inputRef('email').ref}
+              />
             </Grid>
             <Grid className={classes.inputField} item>
-              <TextField fullWidth label={'Senha'} />
+              <TextField
+                {...inputRef('password').rest}
+                fullWidth
+                type={'password'}
+                required
+                label={'Senha'}
+                error={!!errors.password}
+                helperText={errors.password ? errors.password.message : null}
+                inputRef={inputRef('password').ref}
+              />
             </Grid>
             <Grid className={classes.inputField} item>
-              <TextField fullWidth label={'Confirme sua senha'} />
+              <TextField
+                {...inputRef('passwordConfirmation').rest}
+                fullWidth
+                required
+                label={'Confirme sua senha'}
+                type={'password'}
+                error={!!errors.passwordConfirmation}
+                helperText={
+                  errors.passwordConfirmation
+                    ? errors.passwordConfirmation.message
+                    : null
+                }
+                inputRef={inputRef('passwordConfirmation').ref}
+              />
             </Grid>
           </Grid>
 
           <Grid item>
-            <Button className={classes.button}>Criar conta</Button>
+            <Button type={'submit'} className={classes.button}>
+              Criar conta
+            </Button>
           </Grid>
 
           <Grid item>
@@ -76,6 +123,7 @@ function SignUpMobile({ set }) {
             </Typography>
           </Grid>
         </Grid>
+        {state.loading && <DefaultLinerLoading />}
       </form>
     </div>
   )

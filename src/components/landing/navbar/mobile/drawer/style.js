@@ -10,9 +10,14 @@ export default makeStyles(() => ({
     },
   },
   avatar: {
-    height: 80,
-    width: 80,
+    textTransform: 'none',
+    borderRadius: 25,
   },
+  searchContainer: {
+    width: '100%',
+    marginTop: 8,
+  },
+
   avatarTitle: {
     color: 'black',
     letterSpacing: '0.05em',

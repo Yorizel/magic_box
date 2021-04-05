@@ -1,12 +1,18 @@
 import { makeStyles } from '@material-ui/core'
 
 export default makeStyles((theme) => ({
+  rootContainer: {
+    height: '100vh',
+    display: 'flex',
+    alignItems: 'center',
+    overflow: 'hidden',
+    justifyContent: 'center',
+  },
   root: {
     backgroundColor: theme.palette.primary.light,
-    borderRadius: 20,
     overflow: 'hidden',
-    minHeight: 280,
-    minWidth: 280,
+    minHeight: '50vh',
+    minWidth: '100vw',
     height: 'auto',
   },
   inputField: {

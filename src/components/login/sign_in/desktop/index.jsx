@@ -48,6 +48,7 @@ function SignInDesktop({ set, dialog }) {
                 label={'Email'}
                 required
                 error={!!errors.email}
+                placeholder={'joao@gmail.com'}
                 inputRef={inputRef('email').ref}
                 helperText={errors.email ? errors.email.message : ''}
               />
@@ -61,6 +62,7 @@ function SignInDesktop({ set, dialog }) {
                 type={'password'}
                 inputRef={inputRef('password').ref}
                 error={!!errors.password}
+                placeholder={'*******'}
                 helperText={errors.password ? errors.password.message : ''}
               />
             </Grid>

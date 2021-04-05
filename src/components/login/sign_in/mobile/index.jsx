@@ -1,21 +1,36 @@
 import React from 'react'
-import { Button, Grid, TextField, Typography } from '@material-ui/core'
+import {
+  Button,
+  Grid,
+  IconButton,
+  TextField,
+  Typography,
+} from '@material-ui/core'
 import useStyles from './style'
 import DefaultLogo from '../../../@global/logo'
 import PropTypes from 'prop-types'
+import { useSignInController } from '../../../../controllers/SignInController'
+import DefaultLinerLoading from '../../../@global/loading'
+import { Close } from '@material-ui/icons'
 
-function SignInMobile({ set }) {
+function SignInMobile({ set, dialog }) {
+  const {
+    state,
+    errors,
+    submit,
+    handleSubmit,
+    inputRef,
+  } = useSignInController({ dialog })
   const classes = useStyles()
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <form noValidate>
+    <div className={classes.rootContainer}>
+      <IconButton
+        onClick={() => dialog(false)}
+        style={{ position: 'absolute', left: '88%', top: '25%' }}
+      >
+        <Close />
+      </IconButton>
+      <form onSubmit={handleSubmit(submit)} noValidate>
         <Grid
           justify={'space-evenly'}
           alignItems={'center'}
@@ -37,10 +52,29 @@ function SignInMobile({ set }) {
             container
           >
             <Grid className={classes.inputField} item>
-              <TextField fullWidth label={'Email'} />
+              <TextField
+                {...inputRef('email').rest}
+                fullWidth
+                label={'Email'}
+                required
+                error={!!errors.email}
+                placeholder={'joao@gmail.com'}
+                inputRef={inputRef('email').ref}
+                helperText={errors.email ? errors.email.message : ''}
+              />
             </Grid>
             <Grid className={classes.inputField} item>
-              <TextField fullWidth label={'Senha'} />
+              <TextField
+                {...inputRef('password').rest}
+                fullWidth
+                label={'Senha'}
+                required
+                type={'password'}
+                inputRef={inputRef('password').ref}
+                error={!!errors.password}
+                placeholder={'*******'}
+                helperText={errors.password ? errors.password.message : ''}
+              />
             </Grid>
           </Grid>
           <Grid
@@ -50,7 +84,11 @@ function SignInMobile({ set }) {
             container
           >
             <Grid item>
-              <Button variant={'outlined'} className={classes.button}>
+              <Button
+                type={'submit'}
+                variant={'outlined'}
+                className={classes.button}
+              >
                 Entrar
               </Button>
             </Grid>
@@ -70,11 +108,13 @@ function SignInMobile({ set }) {
             </Typography>
           </Grid>
         </Grid>
+        {state.loading && <DefaultLinerLoading />}
       </form>
     </div>
   )
 }
 SignInMobile.propTypes = {
   set: PropTypes.func,
+  dialog: PropTypes.func,
 }
 export default SignInMobile

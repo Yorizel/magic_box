@@ -62,7 +62,7 @@ export const useSignInController = ({ dialog }) => {
     submit,
     inputRef,
     handleSubmit,
-    register,
+
     errors,
     classes,
     state,
