@@ -27,35 +27,36 @@ export const useSignInController = ({ dialog }) => {
     return { ref, rest }
   }
   const submit = async (data) => {
-    setState((prevState) => ({ ...prevState, loading: true }))
-    const res = await controller.find({ data })
-
-    switch (res.error) {
-      case true: {
-        setSnack({
-          open: true,
-          message: 'Email ou senha errados',
-          color: 'error',
-        })
-        setState((prevState) => ({ ...prevState, loading: false }))
-        break
+    try {
+      setState((prevState) => ({ ...prevState, loading: true }))
+      const res = await controller.find({ data })
+      switch (res.error) {
+        case true: {
+          setSnack({
+            open: true,
+            message: 'Email ou senha errados',
+            color: 'error',
+          })
+          break
+        }
+        default: {
+          setAuth({
+            token: res.data.token,
+            firstName: res.data.firstName,
+            lastName: res.data.lastName,
+            isLogged: true,
+            role: res.data.role,
+          })
+          setSnack({
+            open: true,
+            message: `Seja bem vindo de volta ${res.data.firstName}`,
+            color: 'success',
+          })
+          return dialog(false)
+        }
       }
-      default: {
-        setAuth({
-          token: res.data.token,
-          firstName: res.data.firstName,
-          lastName: res.data.lastName,
-          isLogged: true,
-          role: res.data.role,
-        })
-        setState((prevState) => ({ ...prevState, loading: false }))
-        setSnack({
-          open: true,
-          message: `Seja bem vindo de volta ${res.data.firstName}`,
-          color: 'success',
-        })
-        return dialog(false)
-      }
+    } finally {
+      setState((prevState) => ({ ...prevState, loading: false }))
     }
   }
   return {

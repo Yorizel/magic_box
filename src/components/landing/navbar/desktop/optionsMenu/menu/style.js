@@ -1,23 +1,17 @@
 import { makeStyles } from '@material-ui/core'
 
-export default makeStyles(() => ({
-  logoImage: {
-    maxWidth: 60,
+export default makeStyles((theme) => ({
+  rootContainer: {
+    paddingLeft: 3,
   },
-  logoText: {
-    fontFamily: 'GlacialIndifferenceRegular',
-    color: 'black',
-    letterSpacing: '0.25em',
-    textTransform: 'uppercase',
-    fontWeight: 'bold',
-    fontSize: '1.45rem',
+  itemContainer: {
+    width: '100%',
   },
-
-  icon: {
-    maxWidth: 40,
+  arrowIcon: {
+    marginLeft: 'auto',
   },
   textButton: {
-    color: 'black',
+    color: theme.palette.primary.contrastText,
     fontSize: '1.25rem',
   },
 }))

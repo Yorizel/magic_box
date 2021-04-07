@@ -1,60 +1,31 @@
-import {
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from '@material-ui/core'
-import useStyles from './style'
-import { ArrowRight, Dashboard, ExitToApp } from '@material-ui/icons'
+import { List, ListItem, ListItemIcon } from '@material-ui/core'
+import { ArrowRight } from '@material-ui/icons'
 import { DefaultMenuAvatar } from '../../../../../@global/avatar'
-import React, { useContext } from 'react'
-import { AuthContext } from '../../../../../../context/authContext'
+import React from 'react'
 import PropTypes from 'prop-types'
+import { useMenuListController } from './useMenuListController'
 
 function AvatarMenuList({ handleClick }) {
-  const { setAuth } = useContext(AuthContext)
-
-  const logoutHandler = () => {
-    return setAuth({
-      token: '',
-      isLogged: false,
-      first_name: '',
-      last_name: '',
-    })
-  }
-  const classes = useStyles()
-  const data = [
-    { id: 2, icon: <Dashboard />, text: 'Dashboard', func: null },
-    { id: 3, icon: <ExitToApp />, text: 'Logout', func: logoutHandler },
-  ]
+  const { data, auth, classes } = useMenuListController()
   return (
     <>
-      <List style={{ paddingLeft: 3 }} component='div' disablePadding>
-        <ListItem style={{ width: '100%' }} onClick={handleClick} button>
+      <List className={classes.rootContainer} component='div' disablePadding>
+        <ListItem
+          className={classes.itemContainer}
+          onClick={handleClick}
+          button
+        >
           <ListItemIcon>
             <DefaultMenuAvatar />
-            <ArrowRight style={{ marginLeft: 'auto' }} />
+            <ArrowRight className={classes.arrowIcon} />
           </ListItemIcon>
         </ListItem>
-
-        {data.map((item) => (
-          <ListItem key={item.id} onClick={item.func} button>
-            <ListItemIcon>{item.icon}</ListItemIcon>
-            <ListItemText>
-              <Typography className={classes.textButton}>
-                {item.text}
-              </Typography>
-            </ListItemText>
-            <ListItemIcon>
-              <ArrowRight style={{ marginLeft: 'auto' }} />
-            </ListItemIcon>
-          </ListItem>
-        ))}
+        {auth.isLogged ? data() : null}
       </List>
     </>
   )
 }
+
 AvatarMenuList.propTypes = {
   handleClick: PropTypes.func,
 }

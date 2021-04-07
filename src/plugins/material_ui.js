@@ -7,7 +7,8 @@ export default createMuiTheme({
       main: '#D8D8D8',
       dark: '#A8A8A8',
       red: '#783030',
-      contrastText: '#000000',
+      contrastText: '#0B0404',
+      lightText: '#988484',
     },
   },
   breakpoints: {

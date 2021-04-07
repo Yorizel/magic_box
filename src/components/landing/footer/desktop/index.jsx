@@ -1,11 +1,10 @@
-import { Grid, IconButton, Typography } from '@material-ui/core'
-import { Logo } from '../../../../assets'
+import { Grid, IconButton } from '@material-ui/core'
 import { Instagram, YouTube } from '@material-ui/icons'
-import useStyles from './style'
+
 import React from 'react'
+import DefaultLogo from '../../../@global/logo'
 
 export default function DesktopFooter() {
-  const classes = useStyles()
   return (
     <>
       <Grid
@@ -16,10 +15,7 @@ export default function DesktopFooter() {
         container
       >
         <Grid item>
-          <img alt={'deu ruim'} src={Logo} className={classes.logoImage} />
-        </Grid>
-        <Grid item>
-          <Typography className={classes.logoText}>MagicBox</Typography>
+          <DefaultLogo fontSize={'1.50rem'} size={40} />
         </Grid>
       </Grid>
       <Grid alignItems={'center'} justify={'center'} container>

@@ -8,13 +8,15 @@ import SearchBar from '../searchBar'
 import DefaultLogo from '../../../@global/logo'
 import { AuthContext } from '../../../../context/authContext'
 import LoginComponent from '../../../login'
+import { useHistory } from 'react-router-dom'
 
 function DesktopNavbar() {
   const classes = useStyles()
   const { auth } = useContext(AuthContext)
+  const history = useHistory()
   const [open, setOpen] = useState(false)
   const handleClick = () => {
-    if (auth.isLogged) return null
+    if (auth.isLogged) return history.push('profile')
     return setOpen(true)
   }
   return (
@@ -59,8 +61,12 @@ function DesktopNavbar() {
         </Grid>
 
         <Grid item>
-          <Button onClick={handleClick} className={classes.avatarContainer}>
-            <DefaultAvatar />
+          <Button
+            onClick={handleClick}
+            classes={{ root: classes.avatarContainer }}
+            className={'focus:outline-none'}
+          >
+            <DefaultAvatar fontSize={'1.25rem'} size={45} />
           </Button>
         </Grid>
         <Grid item>

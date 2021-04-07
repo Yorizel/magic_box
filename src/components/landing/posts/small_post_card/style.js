@@ -20,7 +20,7 @@ export default makeStyles((theme) => ({
   media: {},
   textDate: {
     marginTop: 'auto',
-    color: '#718096',
+    color: theme.palette.primary.contrastText,
     fontSize: '1.00rem',
     maxWidth: '100%',
     wordBreak: 'break-word',
@@ -36,7 +36,7 @@ export default makeStyles((theme) => ({
     display: 'inline-block',
     fontSize: '1.15rem',
 
-    color: '#2D3748',
+    color: theme.palette.primary.contrastText,
     cursor: 'pointer',
     fontWeight: 'bold',
     transition: ['0.5s'],
@@ -45,7 +45,7 @@ export default makeStyles((theme) => ({
     },
   },
   titleText: {
-    color: '#2D3748',
+    color: theme.palette.primary.contrastText,
     fontWeight: 'bold',
     fontSize: '1.80rem',
     wordBreak: 'break-word',
@@ -54,7 +54,7 @@ export default makeStyles((theme) => ({
   bodyText: {
     lineClamp: 2,
     textOverflow: 'ellipsis',
-    color: '#718096',
+    color: theme.palette.primary.lightText,
     fontSize: '1.10rem',
     maxWidth: '100%',
 

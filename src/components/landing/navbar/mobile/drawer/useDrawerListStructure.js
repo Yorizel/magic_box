@@ -1,61 +1,239 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import useStyles from './style'
 import { useHistory } from 'react-router-dom'
 import {
   ArrowDropDown,
   ArrowDropUp,
+  ArrowRight,
+  Dashboard,
   ExitToApp,
   Instagram,
   ViewHeadline,
 } from '@material-ui/icons'
-import { Collapse } from '@material-ui/core'
+import {
+  Collapse,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+} from '@material-ui/core'
 import MenuList from '../../list'
+import { AuthContext } from '../../../../../context/authContext'
 
 export const useDrawerListStructure = () => {
   const [open, setOpen] = useState(false)
   const classes = useStyles()
   const history = useHistory()
-  const data = [
-    {
-      id: 1,
-      icon: <ViewHeadline />,
-      title: 'Seções',
-      func: () => setOpen(!open),
-      arrow: (
-        <>
-          {open ? (
-            <ArrowDropUp style={{ marginLeft: 'auto' }} />
-          ) : (
-            <ArrowDropDown style={{ marginLeft: 'auto' }} />
-          )}
-        </>
-      ),
-      children: (
-        <Collapse in={open} timeout='auto' unmountOnExit>
-          <MenuList />
-        </Collapse>
-      ),
-    },
-    {
-      id: 2,
-      icon: <Instagram />,
-      func: null,
-      title: 'Instagram',
-      children: null,
-      arrow: null,
-    },
-    {
-      id: 3,
-      func: null,
-      icon: <ExitToApp />,
-      title: 'Logout',
-      children: null,
-      arrow: null,
-    },
-  ]
+  const { auth, setAuth } = useContext(AuthContext)
+  const logoutHandler = () => {
+    return setAuth({
+      token: '',
+      isLogged: false,
+      first_name: '',
+      last_name: '',
+    })
+  }
+  const data = () => {
+    const adminData = [
+      {
+        id: 1,
+        icon: <ViewHeadline />,
+        title: 'Seções',
+        func: () => setOpen(!open),
+        arrow: (
+          <>
+            {open ? (
+              <ArrowDropUp style={{ marginLeft: 'auto' }} />
+            ) : (
+              <ArrowDropDown style={{ marginLeft: 'auto' }} />
+            )}
+          </>
+        ),
+        children: (
+          <Collapse in={open} timeout='auto' unmountOnExit>
+            <MenuList />
+          </Collapse>
+        ),
+      },
+      {
+        id: 2,
+        icon: <Dashboard />,
+        func: null,
+        title: 'Admin panel',
+        children: null,
+        arrow: null,
+      },
+      {
+        id: 4,
+        icon: <Instagram />,
+        func: null,
+        title: 'Instagram',
+        children: null,
+        arrow: null,
+      },
+      {
+        id: 3,
+        func: logoutHandler,
+        icon: <ExitToApp />,
+        title: 'Logout',
+        children: null,
+        arrow: null,
+      },
+    ]
+    const writerData = [
+      {
+        id: 1,
+        icon: <ViewHeadline />,
+        title: 'Seções',
+        func: () => setOpen(!open),
+        arrow: (
+          <>
+            {open ? (
+              <ArrowDropUp style={{ marginLeft: 'auto' }} />
+            ) : (
+              <ArrowDropDown style={{ marginLeft: 'auto' }} />
+            )}
+          </>
+        ),
+        children: (
+          <Collapse in={open} timeout='auto' unmountOnExit>
+            <MenuList />
+          </Collapse>
+        ),
+      },
+      {
+        id: 2,
+        icon: <Dashboard />,
+        func: null,
+        title: 'Dashboard',
+        children: null,
+        arrow: null,
+      },
+      {
+        id: 4,
+        icon: <Instagram />,
+        func: null,
+        title: 'Instagram',
+        children: null,
+        arrow: null,
+      },
+      {
+        id: 3,
+        func: logoutHandler,
+        icon: <ExitToApp />,
+        title: 'Logout',
+        children: null,
+        arrow: null,
+      },
+    ]
+    const userData = [
+      {
+        id: 1,
+        icon: <ViewHeadline />,
+        title: 'Seções',
+        func: () => setOpen(!open),
+        arrow: (
+          <>
+            {open ? (
+              <ArrowDropUp style={{ marginLeft: 'auto' }} />
+            ) : (
+              <ArrowDropDown style={{ marginLeft: 'auto' }} />
+            )}
+          </>
+        ),
+        children: (
+          <Collapse in={open} timeout='auto' unmountOnExit>
+            <MenuList />
+          </Collapse>
+        ),
+      },
+      {
+        id: 2,
+        icon: <Instagram />,
+        func: null,
+        title: 'Instagram',
+        children: null,
+        arrow: null,
+      },
+      {
+        id: 3,
+        func: logoutHandler,
+        icon: <ExitToApp />,
+        title: 'Logout',
+        children: null,
+        arrow: null,
+      },
+    ]
+    switch (auth.role) {
+      case 'WRITER':
+        return writerData.map((item) => (
+          <>
+            <ListItem onClick={item.func} key={item.id} button>
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText>
+                <Typography className={classes.textButton}>
+                  {item.title}
+                </Typography>
+              </ListItemText>
+              <ListItemIcon>
+                {item.arrow ? (
+                  item.arrow
+                ) : (
+                  <ArrowRight style={{ marginLeft: 'auto' }} />
+                )}
+              </ListItemIcon>
+            </ListItem>
+            {item.children ? item.children : null}
+          </>
+        ))
+      case 'ADMIN':
+        return adminData.map((item) => (
+          <>
+            <ListItem onClick={item.func} key={item.id} button>
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText>
+                <Typography className={classes.textButton}>
+                  {item.title}
+                </Typography>
+              </ListItemText>
+              <ListItemIcon>
+                {item.arrow ? (
+                  item.arrow
+                ) : (
+                  <ArrowRight style={{ marginLeft: 'auto' }} />
+                )}
+              </ListItemIcon>
+            </ListItem>
+            {item.children ? item.children : null}
+          </>
+        ))
+      default:
+        return userData.map((item) => (
+          <>
+            <ListItem onClick={item.func} key={item.id} button>
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText>
+                <Typography className={classes.textButton}>
+                  {item.title}
+                </Typography>
+              </ListItemText>
+              <ListItemIcon>
+                {item.arrow ? (
+                  item.arrow
+                ) : (
+                  <ArrowRight style={{ marginLeft: 'auto' }} />
+                )}
+              </ListItemIcon>
+            </ListItem>
+            {item.children ? item.children : null}
+          </>
+        ))
+    }
+  }
   return {
     data,
     classes,
     history,
+    auth,
   }
 }

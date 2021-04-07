@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core'
 
-export default makeStyles(() => ({
+export default makeStyles((theme) => ({
   logoImage: {
     maxWidth: '10vw',
     '@media screen and (min-width: 700px)': {
@@ -9,7 +9,7 @@ export default makeStyles(() => ({
   },
   logoText: {
     fontFamily: 'GlacialIndifferenceRegular',
-    color: 'black',
+    color: theme.palette.primary.contrastText,
     letterSpacing: '0.25em',
     textTransform: 'uppercase',
     fontWeight: 700,

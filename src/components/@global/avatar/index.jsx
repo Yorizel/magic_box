@@ -3,6 +3,7 @@ import { AccountIcon, AvatarImage } from '../../../assets'
 import React, { useContext } from 'react'
 import useStyles from './style'
 import { AuthContext } from '../../../context/authContext'
+import PropTypes from 'prop-types'
 
 export const DefaultMenuAvatar = () => {
   const { auth } = useContext(AuthContext)
@@ -49,7 +50,7 @@ export const DefaultMenuAvatar = () => {
     </>
   )
 }
-export default function DefaultAvatar() {
+function DefaultAvatar({ size, fontSize }) {
   const responsive = useMediaQuery((theme) => theme.breakpoints.down('md'))
   const { auth } = useContext(AuthContext)
 
@@ -60,20 +61,29 @@ export default function DefaultAvatar() {
         <>
           <Grid
             direction={'row'}
-            justify={'space-between'}
+            justify={'space-evenly'}
             alignItems={'center'}
             spacing={1}
             container
           >
             <Grid item>
               {auth.isLogged ? (
-                <Avatar src={AvatarImage} className={classes.avatar} />
+                <Avatar
+                  src={AvatarImage}
+                  style={{ width: size, height: size }}
+                />
               ) : (
-                <Avatar src={AccountIcon} className={classes.avatar} />
+                <Avatar
+                  src={AccountIcon}
+                  style={{ width: size, height: size }}
+                />
               )}
             </Grid>
             <Grid item>
-              <Typography className={classes.avatarTitleDesktop}>
+              <Typography
+                style={{ fontSize: fontSize }}
+                className={classes.avatarTitleDesktop}
+              >
                 {auth.firstName ? `${auth.firstName}` : 'Visitante'}
               </Typography>
             </Grid>
@@ -85,3 +95,8 @@ export default function DefaultAvatar() {
     </>
   )
 }
+DefaultAvatar.propTypes = {
+  size: PropTypes.number.isRequired,
+  fontSize: PropTypes.string.isRequired,
+}
+export default DefaultAvatar

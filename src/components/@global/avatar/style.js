@@ -1,15 +1,14 @@
 import { createStyles, makeStyles } from '@material-ui/core'
 
-export default makeStyles(() =>
+export default makeStyles((theme) =>
   createStyles({
     avatarTitleDesktop: {
-      color: 'black',
+      color: theme.palette.primary.contrastText,
       letterSpacing: '0.01em',
       fontWeight: 500,
-      fontSize: '1.15rem',
     },
     avatarSubTitleDesktop: {
-      color: '#AEA6A6',
+      color: theme.palette.primary.lightText,
 
       fontWeight: 500,
       fontSize: '0.80rem',

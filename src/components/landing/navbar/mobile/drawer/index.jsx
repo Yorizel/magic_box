@@ -1,15 +1,4 @@
-import {
-  Button,
-  Divider,
-  Grid,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Modal,
-  Typography,
-} from '@material-ui/core'
-import { ArrowRight } from '@material-ui/icons'
+import { Button, Divider, Grid, List, Modal } from '@material-ui/core'
 import React, { useState } from 'react'
 import DefaultAvatar from '../../../../@global/avatar'
 import SearchBar from '../../searchBar'
@@ -17,7 +6,7 @@ import { useDrawerListStructure } from './useDrawerListStructure'
 import { MobileLogin } from '../../../../login'
 
 export default function MobileDrawer() {
-  const { data, classes } = useDrawerListStructure()
+  const { data, classes, auth } = useDrawerListStructure()
   const [open, setOpen] = useState(false)
   return (
     <>
@@ -30,7 +19,7 @@ export default function MobileDrawer() {
       >
         <Grid style={{ marginBottom: 6 }} item>
           <Button onClick={() => setOpen(true)} className={classes.avatar}>
-            <DefaultAvatar />
+            <DefaultAvatar fontSize={'1.25rem'} size={45} />
           </Button>
         </Grid>
       </Grid>
@@ -47,26 +36,7 @@ export default function MobileDrawer() {
         container
       >
         <List style={{ paddingLeft: 3 }} component='div' disablePadding>
-          {data.map((item) => (
-            <>
-              <ListItem onClick={item.func} key={item.id} button>
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText>
-                  <Typography className={classes.textButton}>
-                    {item.title}
-                  </Typography>
-                </ListItemText>
-                <ListItemIcon>
-                  {item.arrow ? (
-                    item.arrow
-                  ) : (
-                    <ArrowRight style={{ marginLeft: 'auto' }} />
-                  )}
-                </ListItemIcon>
-              </ListItem>
-              {item.children ? item.children : null}
-            </>
-          ))}
+          {auth.isLogged ? data() : null}
         </List>
       </Grid>
       <Modal

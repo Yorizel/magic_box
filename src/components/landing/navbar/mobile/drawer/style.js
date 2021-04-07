@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core'
 
-export default makeStyles(() => ({
+export default makeStyles((theme) => ({
   root: {
     minWidth: '30vw',
     maxWidth: '100vw',
@@ -26,7 +26,7 @@ export default makeStyles(() => ({
     fontSize: '0.90rem',
   },
   textButton: {
-    color: 'black',
+    color: theme.palette.primary.contrastText,
     fontSize: '1.25rem',
   },
   icon: {

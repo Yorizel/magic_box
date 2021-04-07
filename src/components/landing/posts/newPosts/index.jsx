@@ -12,8 +12,8 @@ function NewPosts({ posts }) {
       alignItems={'center'}
       justify={'center'}
       spacing={5}
-      lg={10}
-      md={10}
+      lg={12}
+      md={12}
       container
       item
     >

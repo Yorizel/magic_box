@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core'
 
-export default makeStyles(() => ({
+export default makeStyles((theme) => ({
   root: {
     maxWidth: '90vw',
     minWidth: '50%',
@@ -26,7 +26,7 @@ export default makeStyles(() => ({
     borderRadius: 8,
   },
   textDate: {
-    color: '#718096',
+    color: theme.palette.primary.contrastText,
     fontSize: '1.00rem',
     maxWidth: '100%',
     wordBreak: 'break-word',
@@ -36,7 +36,7 @@ export default makeStyles(() => ({
     wordBreak: 'break-word',
     display: 'inline-block',
     fontSize: '1.15rem',
-    color: '#2D3748',
+    color: theme.palette.primary.contrastText,
     cursor: 'pointer',
     fontWeight: 'bold',
     transition: ['0.5s'],
@@ -45,7 +45,7 @@ export default makeStyles(() => ({
     },
   },
   titleText: {
-    color: '#2D3748',
+    color: theme.palette.primary.contrastText,
     fontWeight: 'bold',
     fontSize: '3.00rem',
     wordBreak: 'break-word',
@@ -54,7 +54,7 @@ export default makeStyles(() => ({
   bodyText: {
     lineClamp: 4,
     textOverflow: 'ellipsis',
-    color: '#718096',
+    color: theme.palette.primary.lightText,
     fontSize: '1.25rem',
     maxWidth: '100%',
     wordBreak: 'break-word',
