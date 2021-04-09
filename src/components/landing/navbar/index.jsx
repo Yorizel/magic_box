@@ -12,7 +12,7 @@ export default function Navbar() {
     <AppBar
       position={responsive ? 'relative' : 'static'}
       color={'transparent'}
-      style={responsive ? { backgroundColor: 'white' } : undefined}
+      style={{ marginTop: 16 }}
       className={classes.root}
     >
       <Toolbar>{responsive ? <MobileNavbar /> : <DesktopNavbar />}</Toolbar>

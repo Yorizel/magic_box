@@ -19,7 +19,7 @@ import {
 } from '@material-ui/core'
 import MenuList from '../../list'
 import { AuthContext } from '../../../../../context/authContext'
-
+import PropTypes from 'prop-types'
 export const useDrawerListStructure = () => {
   const [open, setOpen] = useState(false)
   const classes = useStyles()
@@ -32,6 +32,26 @@ export const useDrawerListStructure = () => {
       first_name: '',
       last_name: '',
     })
+  }
+  function Options({ item }) {
+    return (
+      <>
+        <ListItem onClick={item.func} button>
+          <ListItemIcon>{item.icon}</ListItemIcon>
+          <ListItemText>
+            <Typography className={classes.textButton}>{item.title}</Typography>
+          </ListItemText>
+          <ListItemIcon>
+            {item.arrow ? (
+              item.arrow
+            ) : (
+              <ArrowRight style={{ marginLeft: 'auto' }} />
+            )}
+          </ListItemIcon>
+        </ListItem>
+        {item.children ? item.children : null}
+      </>
+    )
   }
   const data = () => {
     const adminData = [
@@ -166,69 +186,15 @@ export const useDrawerListStructure = () => {
     ]
     switch (auth.role) {
       case 'WRITER':
-        return writerData.map((item) => (
-          <>
-            <ListItem onClick={item.func} key={item.id} button>
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText>
-                <Typography className={classes.textButton}>
-                  {item.title}
-                </Typography>
-              </ListItemText>
-              <ListItemIcon>
-                {item.arrow ? (
-                  item.arrow
-                ) : (
-                  <ArrowRight style={{ marginLeft: 'auto' }} />
-                )}
-              </ListItemIcon>
-            </ListItem>
-            {item.children ? item.children : null}
-          </>
-        ))
+        return writerData.map((item) => <Options key={item.id} item={item} />)
       case 'ADMIN':
-        return adminData.map((item) => (
-          <>
-            <ListItem onClick={item.func} key={item.id} button>
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText>
-                <Typography className={classes.textButton}>
-                  {item.title}
-                </Typography>
-              </ListItemText>
-              <ListItemIcon>
-                {item.arrow ? (
-                  item.arrow
-                ) : (
-                  <ArrowRight style={{ marginLeft: 'auto' }} />
-                )}
-              </ListItemIcon>
-            </ListItem>
-            {item.children ? item.children : null}
-          </>
-        ))
+        return adminData.map((item) => <Options item={item} key={item.id} />)
       default:
-        return userData.map((item) => (
-          <>
-            <ListItem onClick={item.func} key={item.id} button>
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText>
-                <Typography className={classes.textButton}>
-                  {item.title}
-                </Typography>
-              </ListItemText>
-              <ListItemIcon>
-                {item.arrow ? (
-                  item.arrow
-                ) : (
-                  <ArrowRight style={{ marginLeft: 'auto' }} />
-                )}
-              </ListItemIcon>
-            </ListItem>
-            {item.children ? item.children : null}
-          </>
-        ))
+        return userData.map((item) => <Options item={item} key={item.id} />)
     }
+  }
+  Options.propTypes = {
+    item: PropTypes.object.isRequired,
   }
   return {
     data,

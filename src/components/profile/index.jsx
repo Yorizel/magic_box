@@ -37,10 +37,30 @@ function ProfileContent() {
       date: '15 de maio 2020',
       writer: 'Edgar Santos',
     },
+    {
+      id: 3,
+      image:
+        'https://blogs.opovo.com.br/tomodachinerds/wp-content/uploads/sites/102/2020/01/Tensei-Shitara-Slime-Datta-Ken.jpg',
+      Title: 'Tensei Shitara',
+      description:
+        'asdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasd',
+      date: '15 de maio 2020',
+      writer: 'Edgar Santos',
+    },
+    {
+      id: 3,
+      image:
+        'https://blogs.opovo.com.br/tomodachinerds/wp-content/uploads/sites/102/2020/01/Tensei-Shitara-Slime-Datta-Ken.jpg',
+      Title: 'Tensei Shitara',
+      description:
+        'asdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasdasdfasdfasdfasdfasdfasd',
+      date: '15 de maio 2020',
+      writer: 'Edgar Santos',
+    },
   ]
 
-  const [posts] = useState(Data)
-
+  const newArray = Data.slice(0, 3)
+  const [posts] = useState(newArray)
   return (
     <Grid
       justify={'center'}

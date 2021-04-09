@@ -1,38 +1,35 @@
-import { Grid, IconButton, Typography } from '@material-ui/core'
-import Logo from '../../../../assets/logo.png'
-import useStyles from './style'
+import { Grid, IconButton, Box } from '@material-ui/core'
 import { Instagram, YouTube } from '@material-ui/icons'
 import React from 'react'
-export default function MobileFooter() {
-  const classes = useStyles()
+import DefaultLogo from '../../../@global/logo'
 
+export default function MobileFooter() {
   return (
     <>
       <Grid
         spacing={1}
         direction={'row'}
-        justify={'center'}
+        justify={'space-evenly'}
         alignItems={'center'}
         alignContent={'center'}
         container
       >
         <Grid item>
-          <img alt={'deu ruim'} src={Logo} className={classes.logoImage} />
+          <DefaultLogo fontSize={'1.25rem'} size={35} />
         </Grid>
-        <Grid item>
-          <Typography className={classes.logoText}>MagicBox</Typography>
-        </Grid>
-      </Grid>
 
-      <Grid item>
-        <IconButton href={'https://www.instagram.com/magicbox.tv/'}>
-          <Instagram />
-        </IconButton>
-      </Grid>
-      <Grid item>
-        <IconButton>
-          <YouTube />
-        </IconButton>
+        <Box display={'flex'}>
+          <Grid item>
+            <IconButton href={'https://www.instagram.com/magicbox.tv/'}>
+              <Instagram />
+            </IconButton>
+          </Grid>
+          <Grid item>
+            <IconButton>
+              <YouTube />
+            </IconButton>
+          </Grid>
+        </Box>
       </Grid>
     </>
   )

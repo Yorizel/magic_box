@@ -1,12 +1,10 @@
 import React from 'react'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
-import { Route, Switch, useLocation } from 'react-router-dom'
-import LandingPage from './pages/landing'
-import Post from './pages/post'
-import ProfilePage from './pages/profile'
+import { Switch } from 'react-router-dom'
+import { useRoutesController } from './controllers/RoutesController'
 
 export default function Routes() {
-  const location = useLocation()
+  const { location, routes } = useRoutesController()
   return (
     <TransitionGroup>
       <CSSTransition
@@ -15,17 +13,7 @@ export default function Routes() {
         classNames={'page'}
         in={true}
       >
-        <Switch location={location}>
-          <Route exact path={'/'}>
-            <LandingPage />
-          </Route>
-          <Route exact path={'/post'}>
-            <Post />
-          </Route>
-          <Route exact path={'/profile'}>
-            <ProfilePage />
-          </Route>
-        </Switch>
+        <Switch location={location}>{routes()}</Switch>
       </CSSTransition>
     </TransitionGroup>
   )
