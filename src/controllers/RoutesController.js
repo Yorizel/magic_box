@@ -9,7 +9,13 @@ import DashboardPage from '../pages/dashboard'
 export const useRoutesController = () => {
   const location = useLocation()
   const { auth } = useContext(AuthContext)
-
+  const route = (item) => {
+    return (
+      <Route key={item.id} exact path={item.path}>
+        {item.children}
+      </Route>
+    )
+  }
   const routes = () => {
     const userRoutes = [
       { id: 1, path: '/', children: <LandingPage /> },
@@ -31,23 +37,11 @@ export const useRoutesController = () => {
     if (auth.isLogged) {
       switch (auth.role) {
         case 'WRITER':
-          return writerRoutes.map((item) => (
-            <Route key={item.id} exact path={item.path}>
-              {item.children}
-            </Route>
-          ))
+          return writerRoutes.map((item) => route(item))
         case 'ADMIN':
-          return adminRoutes.map((item) => (
-            <Route key={item.id} exact path={item.path}>
-              {item.children}
-            </Route>
-          ))
+          return adminRoutes.map((item) => route(item))
         default:
-          return userRoutes.map((item) => (
-            <Route key={item.id} exact path={item.path}>
-              {item.children}
-            </Route>
-          ))
+          return userRoutes.map((item) => route(item))
       }
     }
     return userRoutes.map((item) => (

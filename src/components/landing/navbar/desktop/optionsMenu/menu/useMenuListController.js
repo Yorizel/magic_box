@@ -10,7 +10,8 @@ import {
 } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
 import PropTypes from 'prop-types'
-export const useMenuListController = () => {
+import { DefaultMenuAvatar } from '../../../../../@global/avatar'
+export const useMenuListController = ({ handleClick }) => {
   const { auth, setAuth } = useContext(AuthContext)
   const history = useHistory()
 
@@ -25,15 +26,17 @@ export const useMenuListController = () => {
   const classes = useStyles()
   function Options({ item }) {
     return (
-      <ListItem onClick={item.func} button>
-        <ListItemIcon>{item.icon}</ListItemIcon>
-        <ListItemText>
-          <Typography className={classes.textButton}>{item.text}</Typography>
-        </ListItemText>
-        <ListItemIcon>
-          <ArrowRight style={{ marginLeft: 'auto' }} />
-        </ListItemIcon>
-      </ListItem>
+      <>
+        <ListItem onClick={item.func} button>
+          <ListItemIcon>{item.icon}</ListItemIcon>
+          <ListItemText>
+            <Typography className={classes.textButton}>{item.text}</Typography>
+          </ListItemText>
+          <ListItemIcon>
+            <ArrowRight style={{ marginLeft: 'auto' }} />
+          </ListItemIcon>
+        </ListItem>
+      </>
     )
   }
 
@@ -41,23 +44,41 @@ export const useMenuListController = () => {
     const writerData = [
       {
         id: 1,
+        icon: <DefaultMenuAvatar />,
+        text: null,
+        func: handleClick,
+      },
+      {
+        id: 2,
         icon: <Dashboard />,
         text: 'Dashboard',
         func: () => history.push('/dashboard'),
       },
-      { id: 2, icon: <ExitToApp />, text: 'Logout', func: logoutHandler },
+      { id: 3, icon: <ExitToApp />, text: 'Logout', func: logoutHandler },
     ]
     const adminData = [
       {
         id: 1,
+        icon: <DefaultMenuAvatar />,
+        text: null,
+        func: handleClick,
+      },
+      {
+        id: 2,
         icon: <Dashboard />,
         text: 'Admin panel',
         func: () => history.push('/admin-panel'),
       },
-      { id: 2, icon: <ExitToApp />, text: 'Logout', func: logoutHandler },
+      { id: 3, icon: <ExitToApp />, text: 'Logout', func: logoutHandler },
     ]
     const userData = [
-      { id: 1, icon: <ExitToApp />, text: 'Logout', func: logoutHandler },
+      {
+        id: 1,
+        icon: <DefaultMenuAvatar />,
+        text: null,
+        func: handleClick,
+      },
+      { id: 2, icon: <ExitToApp />, text: 'Logout', func: logoutHandler },
     ]
     switch (auth.role) {
       case 'WRITER':

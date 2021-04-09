@@ -72,6 +72,6 @@ function PostsHighLights({ posts }) {
   )
 }
 PostsHighLights.propTypes = {
-  posts: PropTypes.object,
+  posts: PropTypes.array,
 }
 export default PostsHighLights

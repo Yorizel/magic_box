@@ -85,6 +85,6 @@ function NewPosts({ posts }) {
   )
 }
 NewPosts.propTypes = {
-  posts: PropTypes.object,
+  posts: PropTypes.array,
 }
 export default NewPosts
