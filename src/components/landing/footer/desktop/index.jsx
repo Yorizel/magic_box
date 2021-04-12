@@ -1,10 +1,11 @@
-import { Box, Grid, IconButton } from '@material-ui/core'
+import { Box, Grid, IconButton, useMediaQuery } from '@material-ui/core'
 import { Instagram, YouTube } from '@material-ui/icons'
 
 import React from 'react'
 import DefaultLogo from '../../../@global/logo'
 
-export default function DesktopFooter() {
+export default function FooterContent() {
+  const responsive = useMediaQuery((theme) => theme.breakpoints.down('md'))
   return (
     <>
       <Grid
@@ -15,7 +16,10 @@ export default function DesktopFooter() {
         container
       >
         <Grid item>
-          <DefaultLogo fontSize={'1.50rem'} size={40} />
+          <DefaultLogo
+            fontSize={responsive ? '1.25rem' : '1.50rem'}
+            size={responsive ? 32 : 40}
+          />
         </Grid>
 
         <Box display={'flex'}>

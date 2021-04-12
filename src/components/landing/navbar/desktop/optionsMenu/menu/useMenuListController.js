@@ -27,7 +27,7 @@ export const useMenuListController = ({ handleClick }) => {
   function Options({ item }) {
     return (
       <>
-        <ListItem onClick={item.func} button>
+        <ListItem onClick={item.func} className={'focus:outline-none'} button>
           <ListItemIcon>{item.icon}</ListItemIcon>
           <ListItemText>
             <Typography className={classes.textButton}>{item.text}</Typography>
@@ -80,14 +80,25 @@ export const useMenuListController = ({ handleClick }) => {
       },
       { id: 2, icon: <ExitToApp />, text: 'Logout', func: logoutHandler },
     ]
-    switch (auth.role) {
-      case 'WRITER':
-        return writerData.map((item) => <Options key={item.id} item={item} />)
-      case 'ADMIN':
-        return adminData.map((item) => <Options key={item.id} item={item} />)
-      default:
-        return userData.map((item) => <Options key={item.id} item={item} />)
+    const unAuthData = [
+      {
+        id: 1,
+        icon: <DefaultMenuAvatar />,
+        text: null,
+        func: handleClick,
+      },
+    ]
+    if (auth.isLogged) {
+      switch (auth.role) {
+        case 'WRITER':
+          return writerData.map((item) => <Options key={item.id} item={item} />)
+        case 'ADMIN':
+          return adminData.map((item) => <Options key={item.id} item={item} />)
+        default:
+          return userData.map((item) => <Options key={item.id} item={item} />)
+      }
     }
+    return unAuthData.map((item) => <Options key={item.id} item={item} />)
   }
   Options.propTypes = {
     item: PropTypes.object.isRequired,

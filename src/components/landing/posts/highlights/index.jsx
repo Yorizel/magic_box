@@ -18,56 +18,34 @@ function PostsHighLights({ posts }) {
       container
       item
     >
-      {responsive ? (
-        <>
-          <Grid item>
-            <Typography className={classes.responsiveText}>
-              Destaques
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Carousel
-              animation={'slide'}
-              cycleNavigation={true}
-              className={classes.carousel}
-              navButtonsAlwaysInvisible={responsive}
-            >
-              {posts.map((item) => (
+      <Grid item>
+        <Typography
+          className={'text-5xl md:text-7xl'}
+          classes={{ root: classes.responsiveText }}
+        >
+          Destaques
+        </Typography>
+      </Grid>
+      <Grid item>
+        <Carousel
+          animation={'slide'}
+          cycleNavigation={true}
+          navButtonsAlwaysInvisible={true}
+        >
+          {responsive
+            ? posts.map((item) => (
                 <Grid key={item.id} item>
                   <PostCard data={item} />{' '}
                 </Grid>
-              ))}
-            </Carousel>
-          </Grid>
-        </>
-      ) : (
-        <>
-          <Grid item>
-            <Typography className={classes.title}>Destaques</Typography>
-          </Grid>
-          <Grid
-            direction={'row'}
-            alignItems={'center'}
-            justify={'center'}
-            spacing={3}
-            container
-            item
-          >
-            <Carousel
-              animation={'slide'}
-              cycleNavigation={true}
-              navButtonsAlwaysInvisible={!responsive}
-            >
-              {posts.map((item) => (
+              ))
+            : posts.map((item) => (
                 <Grid key={item.id} item>
                   {' '}
                   <LargePostCard data={item} />
                 </Grid>
               ))}
-            </Carousel>
-          </Grid>
-        </>
-      )}
+        </Carousel>
+      </Grid>
     </Grid>
   )
 }

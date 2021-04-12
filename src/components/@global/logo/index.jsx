@@ -9,7 +9,7 @@ function DefaultLogo({ size, fontSize }) {
   const history = useHistory()
   const classes = useStyles()
   return (
-    <Button onClick={() => history.push('/')}>
+    <Button onClick={() => history.push('/')} className={'focus:outline-none'}>
       <Grid
         direction={'row'}
         alignContent={'center'}

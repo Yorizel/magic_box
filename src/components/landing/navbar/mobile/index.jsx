@@ -20,7 +20,10 @@ export default function MobileNavbar() {
         container
       >
         <Grid item>
-          <IconButton onClick={() => setDrawer(true)}>
+          <IconButton
+            className={'focus:outline-none'}
+            onClick={() => setDrawer(true)}
+          >
             <Menu />
           </IconButton>
         </Grid>

@@ -4,8 +4,13 @@ import DashboardSideBar from '../../components/dashboard/drawer'
 
 export default function DashboardPage() {
   return (
-    <Box className={''}>
-      <DashboardSideBar />
-    </Box>
+    <div className={' flex'}>
+      <Box className={'grid-cols-4'}>
+        <DashboardSideBar />
+      </Box>
+      <Box>
+        <DashboardSideBar />
+      </Box>
+    </div>
   )
 }

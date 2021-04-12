@@ -8,6 +8,7 @@ import {
   Typography,
 } from '@material-ui/core'
 import { ArrowRight, DonutLarge, ExitToApp, PostAdd } from '@material-ui/icons'
+import DefaultLogo from '../../@global/logo'
 
 export default function DashboardSideBar() {
   const data = [
@@ -16,27 +17,26 @@ export default function DashboardSideBar() {
     { id: 3, icon: <ExitToApp />, title: 'Logout' },
   ]
   return (
-    <Box
-      component={'div'}
-      display={'flex'}
-      flexDirection={'column'}
-      justifyContent={'center'}
-      alignItems={'start'}
-    >
-      <List>
-        {data.map((item) => (
-          <ListItem button key={item.id} onClick={item.func}>
-            {item.component}
-            <ListItemIcon>{item.icon}</ListItemIcon>
-            <ListItemText>
-              <Typography>{item.title}</Typography>
-            </ListItemText>
-            <ListItemIcon>
-              <ArrowRight />
-            </ListItemIcon>
-          </ListItem>
-        ))}
-      </List>
+    <Box className={'justify-between'}>
+      <Box>
+        <DefaultLogo fontSize={'1.25rem'} size={45} />
+      </Box>
+      <Box>
+        <List>
+          {data.map((item) => (
+            <ListItem button key={item.id} onClick={item.func}>
+              {item.component}
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText>
+                <Typography>{item.title}</Typography>
+              </ListItemText>
+              <ListItemIcon>
+                <ArrowRight />
+              </ListItemIcon>
+            </ListItem>
+          ))}
+        </List>
+      </Box>
     </Box>
   )
 }

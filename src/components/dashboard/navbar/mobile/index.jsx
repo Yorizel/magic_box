@@ -13,7 +13,7 @@ function MobileDashboardNavbar() {
       container
     >
       <Grid item>
-        <IconButton>
+        <IconButton className={'focus:outline-none'}>
           <ViewHeadline />
         </IconButton>
       </Grid>

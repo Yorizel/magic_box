@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core'
 export default makeStyles(() => ({
   root: {
     marginTop: 15,
+    overflow: 'hidden',
   },
   img: {
     height: '30vh',
@@ -11,7 +12,14 @@ export default makeStyles(() => ({
     objectPosition: 'center top',
     borderRadius: 15,
   },
-  title: { fontWeight: 'bold', fontSize: '1.75rem' },
+  desktopImg: {
+    height: '40vh',
+    width: '60vw',
+    objectFit: 'cover',
+    objectPosition: 'center top',
+    borderRadius: 15,
+  },
+
   writer: {
     fontSize: '1.15rem',
     fontWeight: 'bold',

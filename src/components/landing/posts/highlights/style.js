@@ -9,7 +9,6 @@ export default makeStyles((theme) => ({
     fontFamily: 'GlacialIndifferenceRegular',
   },
   title: {
-    fontSize: '4.00rem',
     fontWeight: 'bold',
     color: theme.palette.primary.contrastText,
     letterSpacing: '0.50rem',

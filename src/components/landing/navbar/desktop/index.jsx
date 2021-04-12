@@ -64,7 +64,6 @@ function DesktopNavbar() {
           <Button
             onClick={handleClick}
             classes={{ root: classes.avatarContainer }}
-            className={'focus:outline-none'}
           >
             <DefaultAvatar fontSize={'1.25rem'} size={45} />
           </Button>

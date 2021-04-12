@@ -1,13 +1,15 @@
 import { Button, Divider, Grid, List, Modal } from '@material-ui/core'
 import React, { useState } from 'react'
-import DefaultAvatar from '../../../../@global/avatar'
+import { DefaultMenuAvatar } from '../../../../@global/avatar'
 import SearchBar from '../../searchBar'
 import { useDrawerListStructure } from './useDrawerListStructure'
 import { MobileLogin } from '../../../../login'
+import { useHistory } from 'react-router-dom'
 
 export default function MobileDrawer() {
   const { data, classes, auth } = useDrawerListStructure()
   const [open, setOpen] = useState(false)
+  const history = useHistory()
   return (
     <>
       <Grid
@@ -18,8 +20,15 @@ export default function MobileDrawer() {
         container
       >
         <Grid style={{ marginBottom: 6 }} item>
-          <Button onClick={() => setOpen(true)} className={classes.avatar}>
-            <DefaultAvatar fontSize={'1.25rem'} size={45} />
+          <Button
+            onClick={
+              auth.isLogged
+                ? () => history.push('/profile')
+                : () => setOpen(true)
+            }
+            className={classes.avatar}
+          >
+            <DefaultMenuAvatar />
           </Button>
         </Grid>
       </Grid>

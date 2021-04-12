@@ -24,13 +24,17 @@ function DesktopDashboardNavbar() {
         container
       >
         <Grid item>
-          <IconButton style={{ marginRight: 16 }}>
+          <IconButton
+            className={'focus:outline-none'}
+            style={{ marginRight: 16 }}
+          >
             <ViewHeadline />
           </IconButton>
           <DefaultLogo fontSize={'1.50rem'} size={40} />
         </Grid>
         <Grid item>
           <Button
+            className={'focus:outline-none'}
             onClick={(e) => setOpen(e.currentTarget)}
             style={{
               textTransform: 'none',

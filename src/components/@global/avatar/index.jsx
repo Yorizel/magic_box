@@ -1,4 +1,4 @@
-import { Avatar, Grid, Typography, useMediaQuery } from '@material-ui/core'
+import { Avatar, Grid, Typography } from '@material-ui/core'
 import { AccountIcon, AvatarImage } from '../../../assets'
 import React, { useContext } from 'react'
 import useStyles from './style'
@@ -51,47 +51,34 @@ export const DefaultMenuAvatar = () => {
   )
 }
 function DefaultAvatar({ size, fontSize }) {
-  const responsive = useMediaQuery((theme) => theme.breakpoints.down('md'))
   const { auth } = useContext(AuthContext)
 
   const classes = useStyles()
   return (
     <>
-      {!responsive ? (
-        <>
-          <Grid
-            direction={'row'}
-            justify={'space-evenly'}
-            alignItems={'center'}
-            spacing={1}
-            container
+      <Grid
+        direction={'row'}
+        justify={'space-evenly'}
+        alignItems={'center'}
+        spacing={1}
+        container
+      >
+        <Grid item>
+          {auth.isLogged ? (
+            <Avatar src={AvatarImage} style={{ width: size, height: size }} />
+          ) : (
+            <Avatar src={AccountIcon} style={{ width: size, height: size }} />
+          )}
+        </Grid>
+        <Grid item>
+          <Typography
+            style={{ fontSize: fontSize }}
+            className={classes.avatarTitleDesktop}
           >
-            <Grid item>
-              {auth.isLogged ? (
-                <Avatar
-                  src={AvatarImage}
-                  style={{ width: size, height: size }}
-                />
-              ) : (
-                <Avatar
-                  src={AccountIcon}
-                  style={{ width: size, height: size }}
-                />
-              )}
-            </Grid>
-            <Grid item>
-              <Typography
-                style={{ fontSize: fontSize }}
-                className={classes.avatarTitleDesktop}
-              >
-                {auth.firstName ? `${auth.firstName}` : 'Visitante'}
-              </Typography>
-            </Grid>
-          </Grid>
-        </>
-      ) : (
-        <DefaultMenuAvatar />
-      )}
+            {auth.firstName ? `${auth.firstName}` : 'Visitante'}
+          </Typography>
+        </Grid>
+      </Grid>
     </>
   )
 }

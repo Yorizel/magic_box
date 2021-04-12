@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Grid, Typography } from '@material-ui/core'
+import { Grid, Typography, useMediaQuery } from '@material-ui/core'
 import DefaultAvatar from '../@global/avatar'
 import NewPosts from '../landing/posts/newPosts'
 
 function ProfileContent() {
+  const responsive = useMediaQuery((theme) => theme.breakpoints.down('md'))
   const Data = [
     {
       id: 1,
@@ -71,7 +72,10 @@ function ProfileContent() {
       style={{ padding: 30 }}
     >
       <Grid item>
-        <DefaultAvatar fontSize={'3.00rem'} size={120} />
+        <DefaultAvatar
+          fontSize={responsive ? '3.00rem' : '3.50rem'}
+          size={responsive ? 150 : 200}
+        />
       </Grid>
       <Grid item>
         <Typography style={{ fontSize: '1.80rem' }}>

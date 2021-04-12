@@ -6,7 +6,7 @@ import Footer from '../../components/landing/footer'
 
 export default function ProfilePage() {
   return (
-    <Box style={{ overflow: 'hidden' }}>
+    <Box className={'overflow-hidden'}>
       <Navbar />
       <ProfileContent />
       <Footer />

@@ -17,7 +17,7 @@ export default function MenuList() {
       disablePadding
     >
       {data.map((item) => (
-        <ListItem key={item.id} button>
+        <ListItem key={item.id} className={'focus:outline-none'} button>
           <ListItemIcon>{item.icon}</ListItemIcon>
           <ListItemText>
             <Typography className={classes.textButton}>{item.title}</Typography>

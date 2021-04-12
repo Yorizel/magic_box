@@ -4,10 +4,10 @@ import PropTypes from 'prop-types'
 import { useMenuListController } from './useMenuListController'
 
 function AvatarMenuList({ handleClick }) {
-  const { data, auth, classes } = useMenuListController({ handleClick })
+  const { data, classes } = useMenuListController({ handleClick })
   return (
     <List className={classes.rootContainer} component='div' disablePadding>
-      {auth.isLogged ? data() : null}
+      {data()}
     </List>
   )
 }

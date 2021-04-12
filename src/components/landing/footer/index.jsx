@@ -1,11 +1,11 @@
-import { AppBar, Divider, Toolbar, useMediaQuery } from '@material-ui/core'
+import { AppBar, Divider, Toolbar } from '@material-ui/core'
 import useStyles from './style'
-import MobileFooter from './mobile'
-import DesktopFooter from './desktop'
+import FooterContent from './desktop'
 import React from 'react'
+
 export default function Footer() {
   const classes = useStyles()
-  const responsive = useMediaQuery((theme) => theme.breakpoints.down('md'))
+
   return (
     <>
       <AppBar
@@ -14,7 +14,9 @@ export default function Footer() {
         className={classes.root}
       >
         <Divider />
-        <Toolbar>{responsive ? <MobileFooter /> : <DesktopFooter />}</Toolbar>
+        <Toolbar>
+          <FooterContent />
+        </Toolbar>
       </AppBar>
     </>
   )
